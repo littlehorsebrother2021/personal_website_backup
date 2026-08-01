@@ -1,0 +1,68 @@
+02_STM32N6开发实战1.md
+<!-- &emsp;STM32CubeMX 生成的初始化工程中，将自带多个链接脚本：? STM32N647X0HXQ_*.ld,分类如下：   
+1. LRUN：即 Load and Run，该类链接脚本中定义程序的加载地址和运行地址都在 STM32N6 内部的 SRAM 中，主要用于调试使用  
+
+2. RAMxspi[1-3]：该类链接脚本中定义程序使用了外部 RAM，并且外部 RAM 挂在 STM32N6 的 XSPIn上  
+
+3. ROMxspi[1-3]：该类脚本中定义程序的加载地址和运行地址都在 STM32N6 外部的 Flash 中，并且外部 Flash 挂在 STM32N6 的 XSPIn 上  
+
+&emsp;我们需要修改两个文件：
+1. 修改`STM32N647X0HXQ_LRUN_RAMxspi1.ld`  
+&emsp;打开`STM32N647X0HXQ_LRUN_RAMxspi1.ld`文件，找到 MEMORY，并将其修改为如下：
+```c
+MEMORY
+{
+  RAM    (xrw)    : ORIGIN = 0x34000400,   LENGTH = 2047K
+  EXTRAM (rw)     : ORIGIN = 0x90000000,   LENGTH = 32M
+}
+```
+&emsp;接下来，为该链接脚本添加一个给`EXTRAM`分配的`Section`，找到`SECTIONS`，并在其中添加一个`Section`：
+```c
+  /* External RAM */
+  .EXTRAM (NOLOAD):
+  {
+    . = ALIGN(8);
+    *(.EXTRAM)
+    . = ALIGN(8);
+  } >EXTRAM
+```
+2. 修改`STM32N647X0HXQ_ROMxspi2_RAMxspi1.ld`
+打开`STM32N647X0HXQ_ROMxspi2_RAMxspi1.ld`文件，找到`MEMORY`，并将其修改为如下：
+```c
+MEMORY
+{
+  ROM    (xrw)    : ORIGIN = 0x70100400,   LENGTH = 31743K
+  RAM    (xrw)    : ORIGIN = 0x34000000,   LENGTH = 2048K
+  EXTRAM (rw)     : ORIGIN = 0x90000000,   LENGTH = 32M  
+}
+```
+
+接下来，为该链接脚本添加一个给`EXTRAM`分配的`Section`，找到`SECTIONS`，并在其中添加一个`Section`：
+```c
+  /* External RAM */
+  .EXTRAM (NOLOAD):
+  {
+    . = ALIGN(8);
+    *(.EXTRAM)
+    . = ALIGN(8);
+  } >EXTRAM
+```
+
+
+#### 2.3 配置工程使用的链接脚本
+&emsp;选中工程后，依次点击工具栏中的`"Project"`->`"Properties"`
+![配置工程使用的链接脚本](Properties.png)  
+&emsp;在弹出的窗口中，依次点击`"C/C++ Build"`->`"Settings"`->`"Tool Settings"`->`"Linker"`->`"General"`->`"Miscellaneous"`，在`"Miscellaneous"`中，找到`"Linker script"`，将其修改为`STM32N647X0HXQ_LRUN_RAMxspi1.ld`，然后点击`"Apply"`，最后点击`"OK"`，即可完成配置。
+
+接着，依次打开 "C/C++ Build" -> "Settings" -> "Tool Settings" -> "MCU/MPU GCC Linker" -> "General" 
+
+
+Configuration 用于切换当前窗口中的配置应用于工程的哪个配置，其中，Debug 对应用于调试的工程配置，Release 对应用于烧录的工程配置
+
+接着在 Linker Script (-T) 中输入链接脚本的路径，如下：
+```text 
+Debug 配置：${workspace_loc:/${ProjName}/STM32N647X0HXQ_LRUN_RAMxspi1.ld}
+
+Release 配置：${workspace_loc:/${ProjName}/STM32N647X0HXQ_ROMxspi2_RAMxspi1.ld}
+```
+-->
