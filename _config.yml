@@ -115,7 +115,7 @@ permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
 
-postInfo:
+  postInfo:
   date: true
   update: true
   wordCount: true # 设置文章字数统计为 true.

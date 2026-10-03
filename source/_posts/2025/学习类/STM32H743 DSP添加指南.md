@@ -16,7 +16,7 @@ date: 2025-04-03 19:10:36
 
 ### 1. 打开STM32CubeMX 配置工程
 &emsp;进入配置主界面之后，点击Software packs,出现如下内容。
-![software packs](software_packs.png)
+![software packs](./STM32H743%20DSP添加指南/software_packs.png)
 
 
 &emsp;我们要选择第一个select components，然后会出现如下页面。  
