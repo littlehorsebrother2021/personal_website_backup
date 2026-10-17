@@ -24,7 +24,7 @@
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 13.3 KB | — | 2026-10-17 20:18 |
-| [README.md](<README.md>) | Markdown | 2.1 KB | scripts —— 文档维护脚本 | 2026-10-17 20:43 |
+| [README.md](<README.md>) | Markdown | 2.1 KB | scripts —— 文档维护脚本 | 2026-10-17 20:50 |
 
 <!-- MANIFEST:END -->` 之间的内容重写成该目录的实时清单
    （文件/子目录、类型、大小、标题、最后修改时间，并附带指向总览与上级目录的链接）。

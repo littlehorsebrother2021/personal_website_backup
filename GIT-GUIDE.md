@@ -2,8 +2,8 @@
 
 > 给「记不住 git」的自己用。**只需要记住第 1 节的 6 条命令**，其余当字典查。
 > 本仓库：Hexo 博客源码 ｜ 本地分支：`main` ｜ 远程：`origin` = `personal_website_backup`
-> ⚠️ **源码在远程分支 `cleanup-2026-10-17` 上；远程默认分支 `main` 仍是另一条历史。**
-> 2026-10-17 已把 `main` 的内容**合并进** `cleanup-2026-10-17`（提交 `d0def91`），但 `main` 分支本身未改动。
+> ✅ **源码分支 `cleanup-2026-10-17` 已是仓库默认分支**（2026-10-17 切换），克隆即得源码。
+> 远程 `main` 仍是另一条旧历史（2026-08-01 备份），内容已合并进本分支，但分支本身保留未动。
 
 ---
 
@@ -228,21 +228,21 @@ git add -A && git commit -m "说明" && git push
 远端分支：
   main                  ← 另一条历史（2026-08-01 备份；内容已于 d0def91 合并进本分支）
   lagacy-backup         ← AI 修改前的原始版本
-  cleanup-2026-10-17    ← ★ 当前源码主线（已含 main 的封面/工具/文档）
+  cleanup-2026-10-17    ← ★ 当前源码主线，也是**仓库默认分支**（已含 main 的封面/工具/文档）
 ```
 
-**因为这个仓库的默认分支是 `main`，而源码在 `cleanup-2026-10-17` 上，所以：**
+**默认分支已改为 `cleanup-2026-10-17`（2026-10-17），所以克隆不用再指定分支：**
 
 | 场景 | 命令 |
 | :--- | :--- |
 | 日常提交 | `git add -A && git commit -m "说明" && git push`（当前分支已跟踪 `origin/cleanup-2026-10-17`） |
 | 日常拉取 | `git pull` |
-| **新电脑克隆** | `git clone -b cleanup-2026-10-17 https://github.com/littlehorsebrother2021/personal_website_backup.git` ← **必须带 `-b`**，否则拿到的是另一条历史的 main |
+| **新电脑克隆** | `git clone https://github.com/littlehorsebrother2021/personal_website_backup.git`（默认分支即源码） |
 | 查看差异 | `git diff origin/main origin/cleanup-2026-10-17 --stat`（应只差本分支新增的内容） |
 
 > **合并已完成（2026-10-17，提交 `d0def91`）**：`main` 里的定制封面图、`assets/`、`tools/`、`docs/`、
 > 以及 3 篇文章修复后的图片路径，都已并入本分支；`main` 分支本身保持原样未动。
-> 若要让 GitHub 首页默认显示源码，可到 Settings → Default branch 改成 `cleanup-2026-10-17`。
+> 仓库默认分支已切到 `cleanup-2026-10-17`，GitHub 首页现在展示的就是这份源码。
 
 ### 方案 A（推荐）：源码放独立仓库，Pages 仓库只收静态文件
 
