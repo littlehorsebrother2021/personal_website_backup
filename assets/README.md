@@ -39,6 +39,6 @@ themes/hexo-theme-matery/source/medias/featureimages/*.jpg （文章默认封面
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [nature/](<nature>) | 目录 | 9 个文件 | — | 2026-10-17 20:40 |
-| [README.md](<README.md>) | Markdown | 1.3 KB | assets —— 封面 / 背景素材库 | 2026-10-17 20:41 |
+| [README.md](<README.md>) | Markdown | 1.7 KB | assets —— 封面 / 背景素材库 | 2026-10-17 20:43 |
 
 <!-- MANIFEST:END -->

@@ -36,6 +36,6 @@
 | [draft.md](<draft.md>) | Markdown | 33 B | {{ title }} | 2023-10-20 21:29 |
 | [page.md](<page.md>) | Markdown | 44 B | {{ title }} | 2023-10-20 21:29 |
 | [post.md](<post.md>) | Markdown | 50 B | {{ title }} | 2023-10-20 21:29 |
-| [README.md](<README.md>) | Markdown | 1.9 KB | scaffolds —— 新建文件模板 | 2026-10-17 20:30 |
+| [README.md](<README.md>) | Markdown | 1.9 KB | scaffolds —— 新建文件模板 | 2026-10-17 20:43 |
 
 <!-- MANIFEST:END -->

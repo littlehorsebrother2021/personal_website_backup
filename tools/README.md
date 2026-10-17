@@ -54,7 +54,7 @@ powershell -ExecutionPolicy Bypass -File tools\replace-logo.ps1 -Build
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [README.md](<README.md>) | Markdown | 2.0 KB | tools —— 封面 / 图标生成脚本 | 2026-10-17 20:41 |
+| [README.md](<README.md>) | Markdown | 2.6 KB | tools —— 封面 / 图标生成脚本 | 2026-10-17 20:43 |
 | [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-17 20:40 |
 | [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
 
