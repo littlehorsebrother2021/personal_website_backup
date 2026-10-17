@@ -33,6 +33,9 @@ const SKIP_DIRS = new Set([
   '_acl-recovery',
 ]);
 
+/** 不参与扫描的单个文件（Hexo 缓存，已被 .gitignore 排除） */
+const SKIP_FILES = new Set(['db.json']);
+
 /** 说明文件的两套命名：src 内必须用下划线前缀，否则会被 Hexo 当成页面渲染 */
 const README_NAMES = ['README.md', '_README.md'];
 
@@ -139,6 +142,7 @@ function listDir(dir) {
       if (SKIP_DIRS.has(e.name)) continue;
       dirs.push(e.name);
     } else {
+      if (SKIP_FILES.has(e.name)) continue;
       files.push(e.name);
     }
   }
@@ -153,7 +157,7 @@ function countFiles(dir) {
     if (e.isDirectory()) {
       if (SKIP_DIRS.has(e.name)) continue;
       n += countFiles(path.join(dir, e.name));
-    } else n += 1;
+    } else if (!SKIP_FILES.has(e.name)) n += 1;
   }
   return n;
 }
@@ -303,7 +307,7 @@ function buildRootManifest() {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       if (e.isDirectory()) {
         if (!SKIP_DIRS.has(e.name)) scan(path.join(dir, e.name));
-      } else {
+      } else if (!SKIP_FILES.has(e.name)) {
         const st = fs.statSync(path.join(dir, e.name));
         totalFiles += 1;
         totalBytes += st.size;
@@ -323,7 +327,7 @@ function buildRootManifest() {
     `> 本文件由 \`scripts/gen-manifest.mjs\` 自动生成，**请勿手改**；需要刷新时在项目根执行 \`npm run manifest\`。`
   );
   out.push(
-    '> 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`_audit/`）。'
+    '> 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`）。'
   );
   out.push(`> 生成时间：${fmtTime(new Date())}`);
   out.push('');

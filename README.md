@@ -30,6 +30,7 @@
 | `_config.yml` | 站点主配置（标题、链接格式、插件、部署） | YAML | 见下方「配置要点」 |
 | `package.json` / `package-lock.json` | 依赖与命令定义 | JSON | 本文件 |
 | `MANIFEST.md` | 全站统计、目录索引、文章索引 | Markdown | 自动生成 |
+| `GIT-GUIDE.md` | **Git 速查手册**：常用命令、撤销回退、报错处理、多电脑同步方案 | Markdown | 本文件 |
 | `source/` | 站点内容根目录 | Markdown / 图片 / XML | [source/_README.md](source/_README.md) |
 | `source/_posts/` | 文章正文，按 `年份/分类/` 归档 | Markdown + 图片 | [source/_posts/_README.md](source/_posts/_README.md) |
 | `source/_data/` | 页面引用的结构化数据（友链等） | JSON | [source/_data/_README.md](source/_data/_README.md) |
@@ -65,16 +66,16 @@
 | [.github/](<.github/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 19:55 |
 | [.vscode/](<.vscode>) | 目录 | 1 个文件 | — | 2026-10-17 19:50 |
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 19:55 |
-| [scripts/](<scripts/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 19:56 |
+| [scripts/](<scripts/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:18 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 19:55 |
 | [themes/](<themes/README.md>) | 目录 | 234 个文件 | — | 2026-10-17 19:55 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 19:52 |
 | [.gitignore](<.gitignore>) | 无扩展名 | 687 B | — | 2026-10-17 19:50 |
-| [db.json](<db.json>) | JSON | 1.15 MB | 配置 / 数据 | 2026-10-17 19:53 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 16.2 KB | 全站文件清单 | 2026-10-17 19:55 |
+| [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 10.2 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:18 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.5 KB | 全站文件清单 | 2026-10-17 19:56 |
 | [package-lock.json](<package-lock.json>) | JSON | 211.6 KB | 配置 / 数据 | 2026-10-17 19:52 |
 | [package.json](<package.json>) | JSON | 885 B | 配置 / 数据 | 2026-10-17 19:55 |
-| [README.md](<README.md>) | Markdown | 7.6 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 19:55 |
+| [README.md](<README.md>) | Markdown | 7.7 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 20:18 |
 
 <!-- MANIFEST:END -->
 ```
