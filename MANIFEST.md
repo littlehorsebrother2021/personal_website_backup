@@ -2,14 +2,14 @@
 
 > 本文件由 `tools/gen-manifest.mjs` 自动生成，**请勿手改**；需要刷新时在项目根执行 `npm run manifest`。
 > 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`、`assets/incoming/`）。
-> 生成时间：2026-10-17 21:12
+> 生成时间：2026-10-17 21:26
 
 ## 一、全站统计
 
 | 指标 | 数值 |
 | :--- | :--- |
-| 受控文件总数 | 449 |
-| 文件总体积 | 59.90 MB |
+| 受控文件总数 | 448 |
+| 文件总体积 | 60.09 MB |
 | 目录总数 | 97 |
 | 索引中列出 | 30 个（有说明文档或有文章的目录） |
 | 文章总数 | 37 |
@@ -20,10 +20,10 @@
 | 扩展名 | 类型 | 文件数 | 体积 |
 | :--- | :--- | ---: | ---: |
 | `.png` | 图片 | 129 | 14.01 MB |
-| `.md` | Markdown | 80 | 340.5 KB |
+| `.md` | Markdown | 80 | 341.2 KB |
 | `.ejs` | EJS 模板 | 72 | 203.3 KB |
 | `.js` | JavaScript | 55 | 9.08 MB |
-| `.jpg` | 图片 | 41 | 34.32 MB |
+| `.jpg` | 图片 | 40 | 34.51 MB |
 | `.css` | 样式表 | 28 | 736.1 KB |
 | `(无)` | — | 7 | 12.7 KB |
 | `.yml` | YAML | 7 | 43.4 KB |
@@ -31,7 +31,7 @@
 | `.json` | JSON | 4 | 213.3 KB |
 | `.woff2` | 字体 | 4 | 282.0 KB |
 | `.txt` | 文本 | 3 | 3.0 KB |
-| `.ps1` | — | 3 | 24.3 KB |
+| `.ps1` | — | 3 | 25.4 KB |
 | `.html` | HTML | 2 | 110 B |
 | `.svg` | 矢量图 | 2 | 19.0 KB |
 | `.woff` | 字体 | 2 | 10.6 KB |
@@ -46,7 +46,7 @@
 
 | 目录 | 说明文档 | 直属文件 | 直属子目录 | 合计文件 | 最后修改 |
 | :--- | :--- | ---: | ---: | ---: | :--- |
-| `.` | [说明](README.md) | 9 | 8 | 449 | 2026-10-17 21:11 |
+| `.` | [说明](README.md) | 9 | 8 | 448 | 2026-10-17 21:26 |
 | `.github` | [说明](.github/README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `.vscode` | — | 1 | 0 | 1 | 2026-10-17 19:50 |
 | `assets` | [说明](assets/README.md) | 1 | 1 | 10 | 2026-10-17 21:04 |
@@ -73,9 +73,9 @@
 | `source/contact` | [说明](source/contact/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `source/friends` | [说明](source/friends/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `source/tags` | [说明](source/tags/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
-| `themes` | [说明](themes/README.md) | 2 | 1 | 219 | 2026-10-17 20:30 |
-| `themes/hexo-theme-matery` | [说明](themes/hexo-theme-matery/README.md) | 6 | 4 | 217 | 2026-10-17 21:03 |
-| `tools` | [说明](tools/README.md) | 5 | 0 | 5 | 2026-10-17 21:12 |
+| `themes` | [说明](themes/README.md) | 2 | 1 | 218 | 2026-10-17 20:30 |
+| `themes/hexo-theme-matery` | [说明](themes/hexo-theme-matery/README.md) | 6 | 4 | 216 | 2026-10-17 21:03 |
+| `tools` | [说明](tools/README.md) | 5 | 0 | 5 | 2026-10-17 21:26 |
 
 ## 四、文章索引
 

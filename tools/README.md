@@ -36,9 +36,9 @@ npm run manifest          # 等价于 node tools/gen-manifest.mjs
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 15.8 KB | — | 2026-10-17 21:02 |
+| [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 17.0 KB | — | 2026-10-17 21:26 |
 | [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 13.4 KB | — | 2026-10-17 21:11 |
-| [README.md](<README.md>) | Markdown | 7.3 KB | tools —— 维护脚本 | 2026-10-17 21:12 |
+| [README.md](<README.md>) | Markdown | 7.7 KB | tools —— 维护脚本 | 2026-10-17 21:26 |
 | [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-17 20:40 |
 | [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
 
@@ -109,10 +109,13 @@ powershell -ExecutionPolicy Bypass -File tools\fetch-covers.ps1 -Source picsum -
 > 必应一次只给最近 8 天，`-Count` 超过 8 会自动跳过；
 > Picsum 会记录用过的 id（`assets/incoming/used-picsum.json`）避免重复。
 
-**三点注意**
+**几点注意**
 
 - 原始大图只落在 `assets/incoming/`（已 gitignore，4K 每张 3~4 MB），入库的只有裁剪后的小图。
-- 替换是整体替换：新图更少时多余的旧编号会被删掉；加 `-Keep` 则保留旧图并追加。
+- **替换成功后自动删除这批原始大图**，只留 `sources.json`；想保留原图加 `-KeepOriginals`。
+- 替换是整体替换：新图更少时多余的旧编号会被删掉；`-Keep` 可保留旧图并追加新图。
+- **站点背景是例外**：主题按星期只读 `0-6.jpg` 共 7 张，所以 `banner` / `both` 会**忽略 `-Keep`**
+  （否则新图被排到 7 号之后永不显示），且完成后强制只留 7 张。
 - 每批会在暂存目录写 `sources.json`，记录 URL / 作者 / 日期，方便核对授权。
 
 ### 手动指定图片（原有用法）

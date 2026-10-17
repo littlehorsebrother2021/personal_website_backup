@@ -57,6 +57,7 @@ param(
     [string]$OutFolder,
 
     [switch]$Keep,
+    [switch]$KeepOriginals,
     [switch]$Build,
     [switch]$DryRun,
     [switch]$Interactive
@@ -135,6 +136,13 @@ if ($Target -in @('banner', 'both') -and $Count -lt 7) {
 if ($Target -eq 'banner' -and $Count -gt 7) {
     Write-Warning "站点背景只用到 0-6.jpg 共 7 张，已截断为 7。"
     $Count = 7
+}
+
+# 站点背景按星期取图，只读 0-6.jpg。若保留旧图，新图会被排到 7 号之后永不显示，
+# 所以 banner/both 场景直接忽略 -Keep（2026-10-17 实测踩到的坑）。
+if ($Keep -and $Target -in @('banner', 'both')) {
+    Write-Warning '站点背景固定只用 0-6.jpg 七张，-Keep 会让新图排到 7 号之后而永不显示，已忽略 -Keep。'
+    $Keep = $false
 }
 
 $featureDir = Join-Path $root 'themes\hexo-theme-matery\source\medias\featureimages'
@@ -365,7 +373,18 @@ function Remove-Stale {
 
 Write-Host '[2/3] 清理多余编号...' -ForegroundColor Cyan
 if ($Target -in @('feature', 'both')) { Remove-Stale -Dir $featureDir -KeepCount $got.Count }
-if ($Target -in @('banner', 'both')) { Remove-Stale -Dir $bannerDir -KeepCount $got.Count }
+# 背景固定 7 张：无论前面算出来多少，7 号及以后一律删掉，避免出现永不显示的孤儿文件
+if ($Target -in @('banner', 'both')) { Remove-Stale -Dir $bannerDir -KeepCount 7 }
+
+# 替换成功后，原始大图（4K 每张 3~4MB）就没用了，默认清掉，只留 sources.json 作为来源记录
+if (-not $KeepOriginals) {
+    $big = @(Get-ChildItem -LiteralPath $OutFolder -File -Filter *.jpg)
+    if ($big.Count -gt 0) {
+        $mb = [math]::Round((($big | Measure-Object Length -Sum).Sum) / 1MB, 1)
+        $big | Remove-Item -Force
+        Write-Host ("  已清理原始大图 {0} 张（释放 {1} MB），保留 sources.json" -f $big.Count, $mb)
+    }
+}
 
 # ---------------------------------------------------------------- 构建
 if ($Build) {
@@ -389,4 +408,8 @@ if ($Build) {
 }
 
 Write-Host ''
-Write-Host '完成。原始大图在 assets/incoming/（不入库），站点用的是裁剪后的小图。' -ForegroundColor Green
+if ($KeepOriginals) {
+    Write-Host ("完成。原始大图保留在 {0}（不入库），站点用的是裁剪后的小图。" -f $OutFolder) -ForegroundColor Green
+} else {
+    Write-Host '完成。原始大图已清理，站点用的是裁剪后的小图。' -ForegroundColor Green
+}

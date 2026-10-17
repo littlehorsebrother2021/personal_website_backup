@@ -60,7 +60,7 @@
 ## 清单      ← 自动生成：目录内每个文件/子目录的类型、大小、说明、最后修改时间
    <!-- MANIFEST:BEGIN -->
 
-> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 449 个文件
+> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 448 个文件
 >
 > [站点总览](README.md) ｜ [全站清单](MANIFEST.md)
 
@@ -72,17 +72,17 @@
 | [docs/](<docs/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:41 |
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 20:30 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 20:30 |
-| [themes/](<themes/README.md>) | 目录 | 219 个文件 | — | 2026-10-17 20:30 |
-| [tools/](<tools/README.md>) | 目录 | 5 个文件 | — | 2026-10-17 21:12 |
+| [themes/](<themes/README.md>) | 目录 | 218 个文件 | — | 2026-10-17 20:30 |
+| [tools/](<tools/README.md>) | 目录 | 5 个文件 | — | 2026-10-17 21:26 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 20:56 |
 | [.gitattributes](<.gitattributes>) | 无扩展名 | 592 B | — | 2026-10-17 21:01 |
 | [.gitignore](<.gitignore>) | 无扩展名 | 866 B | — | 2026-10-17 21:01 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
 | [logo.png](<logo.png>) | 图片 | 2.49 MB | — | 2026-10-17 20:40 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 21:11 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 21:26 |
 | [package-lock.json](<package-lock.json>) | JSON | 211.6 KB | 配置 / 数据 | 2026-10-17 19:52 |
 | [package.json](<package.json>) | JSON | 964 B | 配置 / 数据 | 2026-10-17 21:11 |
-| [README.md](<README.md>) | Markdown | 9.9 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:11 |
+| [README.md](<README.md>) | Markdown | 10.3 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:26 |
 
 <!-- MANIFEST:END -->
 ```
@@ -136,6 +136,7 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-17 | 用 `npm run covers` 换入新的文章封面（8 张）与站点背景（7 张）。同时修掉脚本 bug：`banner` 场景下 `-Keep` 会把新图排到 7 号之后永不显示，现已忽略该组合并强制背景只留 7 张；替换成功后自动清理下载的原始大图（`-KeepOriginals` 可保留）。 |
 | 2026-10-17 | **新增 `tools/fetch-covers.ps1` + `npm run covers`**：可从必应（4K）或 Picsum 抓取壁纸，交互式选来源/用途/张数，自动下载校验、裁剪替换、清理多余编号、可选构建；原图存 `assets/incoming/` 且不入库。同时清理 17 张孤儿图（featureimages 9-23、banner 7-8，主题只用到 0-8 与 0-6）、补 `.gitattributes` 统一换行符。 |
 | 2026-10-17 | **合并远程 `main`（2026-08-01 备份）**：取回封面/背景定制图（banner 0-8、featureimages 0-8、logo、favicon）、`assets/nature` 素材、`tools/` 两个生成脚本、`docs/评论区与封面配置.md`、根 `logo.png`；修正 3 篇文章的图片引用（原 `./image/...` 写法渲染后是死链），并把 `2025/阶段总结/image/除夕，2024一年总结/` 迁到标准位置 `2025/阶段总结/除夕，2024一年总结/`；主题 `_config.yml` 采用远程版本（`githubLink` 修正、`tcaptcha` 关闭）、`contact.ejs` 采用远程版本（去掉不存在的 `/css/style.css`、恢复 valine 条件加载）。仍保留本地的精简结构、文档体系与 `hexo-generator-search`；未恢复已删除的 `cyanstyle` 主题与重复副本。 |
 | 2026-10-17 | 结构整理：删除重复主题副本（约 36MB）与未启用的 `cyanstyle` 主题；新增 `.gitignore` 并重建仓库索引（6513 → 419 个受控文件）；修复站内搜索（补装 `hexo-generator-search`）；修复 `source/.nojekyll`（原为空目录）；精简 `_config.yml` 无效配置；补齐各目录说明与清单。详见 [themes/README.md](themes/README.md) 的「已移除主题」一节。 |
