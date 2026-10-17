@@ -16,6 +16,10 @@ db.json
 # ---- 维护脚本产生的临时快照 ----
 _audit/
 
+# ---- 壁纸自动下载的原始大图（4K 每张 3~4MB，不入库）----
+# 只提交 tools/update-covers.ps1 裁剪后的小图（featureimages / banner）
+assets/incoming/
+
 # ---- 日志 ----
 *.log
 npm-debug.log*

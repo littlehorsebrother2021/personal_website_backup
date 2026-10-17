@@ -19,7 +19,7 @@
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [_README.md](<_README.md>) | Markdown | 1006 B | friends —— 友情链接 | 2026-10-17 20:50 |
+| [_README.md](<_README.md>) | Markdown | 1006 B | friends —— 友情链接 | 2026-10-17 20:56 |
 | [index.md](<index.md>) | Markdown | 85 B | friends | 2024-02-14 17:06 |
 
 <!-- MANIFEST:END -->

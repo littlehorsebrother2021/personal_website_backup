@@ -8,6 +8,7 @@
     "deploy": "hexo deploy",
     "manifest": "node scripts/gen-manifest.mjs",
     "new": "hexo new",
+    "covers": "powershell -ExecutionPolicy Bypass -File tools/fetch-covers.ps1 -Interactive",
     "server": "hexo server"
   },
   "hexo": {

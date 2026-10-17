@@ -17,6 +17,7 @@
 | 清理缓存 | `npm run clean` | 改过配置/主题后建议先清理 |
 | 部署 | `npm run deploy` | 会自动提交并推送到 GitHub Pages 仓库 |
 | 刷新文档清单 | `npm run manifest` | 重写各目录 README 的「清单」段与根目录 `MANIFEST.md` |
+| 换文章封面 | `npm run covers` | 从必应 / Picsum 抓 4K 壁纸，自动裁剪并替换（见 [tools/README.md](tools/README.md)） |
 
 > **本机提示**：`npm` 可能不在 PATH 中，此时用 Node 直接调用即可，例如
 > `node node_modules/hexo-cli/bin/hexo generate`。
@@ -60,7 +61,7 @@
 ## 清单      ← 自动生成：目录内每个文件/子目录的类型、大小、说明、最后修改时间
    <!-- MANIFEST:BEGIN -->
 
-> **路径**：`.` ｜ **直属文件** 8 ｜ **直属子目录** 9 ｜ **本目录合计** 465 个文件
+> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 9 ｜ **本目录合计** 451 个文件
 >
 > [站点总览](README.md) ｜ [全站清单](MANIFEST.md)
 
@@ -68,21 +69,22 @@
 | :--- | :--- | :--- | :--- | :--- |
 | [.github/](<.github/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [.vscode/](<.vscode>) | 目录 | 1 个文件 | — | 2026-10-17 19:50 |
-| [assets/](<assets/README.md>) | 目录 | 10 个文件 | — | 2026-10-17 20:41 |
+| [assets/](<assets/README.md>) | 目录 | 11 个文件 | — | 2026-10-17 21:04 |
 | [docs/](<docs/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:41 |
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 20:30 |
 | [scripts/](<scripts/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 20:30 |
-| [themes/](<themes/README.md>) | 目录 | 236 个文件 | — | 2026-10-17 20:30 |
-| [tools/](<tools/README.md>) | 目录 | 3 个文件 | — | 2026-10-17 20:41 |
+| [themes/](<themes/README.md>) | 目录 | 219 个文件 | — | 2026-10-17 20:30 |
+| [tools/](<tools/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 21:04 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 20:56 |
-| [.gitignore](<.gitignore>) | 无扩展名 | 687 B | — | 2026-10-17 19:50 |
+| [.gitattributes](<.gitattributes>) | 无扩展名 | 592 B | — | 2026-10-17 21:01 |
+| [.gitignore](<.gitignore>) | 无扩展名 | 866 B | — | 2026-10-17 21:01 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
 | [logo.png](<logo.png>) | 图片 | 2.49 MB | — | 2026-10-17 20:40 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 20:50 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 20:56 |
 | [package-lock.json](<package-lock.json>) | JSON | 211.6 KB | 配置 / 数据 | 2026-10-17 19:52 |
-| [package.json](<package.json>) | JSON | 885 B | 配置 / 数据 | 2026-10-17 19:55 |
-| [README.md](<README.md>) | Markdown | 9.3 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 20:50 |
+| [package.json](<package.json>) | JSON | 979 B | 配置 / 数据 | 2026-10-17 21:01 |
+| [README.md](<README.md>) | Markdown | 9.8 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:05 |
 
 <!-- MANIFEST:END -->
 ```
@@ -135,5 +137,6 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-17 | **新增 `tools/fetch-covers.ps1` + `npm run covers`**：可从必应（4K）或 Picsum 抓取壁纸，交互式选来源/用途/张数，自动下载校验、裁剪替换、清理多余编号、可选构建；原图存 `assets/incoming/` 且不入库。同时清理 17 张孤儿图（featureimages 9-23、banner 7-8，主题只用到 0-8 与 0-6）、补 `.gitattributes` 统一换行符。 |
 | 2026-10-17 | **合并远程 `main`（2026-08-01 备份）**：取回封面/背景定制图（banner 0-8、featureimages 0-8、logo、favicon）、`assets/nature` 素材、`tools/` 两个生成脚本、`docs/评论区与封面配置.md`、根 `logo.png`；修正 3 篇文章的图片引用（原 `./image/...` 写法渲染后是死链），并把 `2025/阶段总结/image/除夕，2024一年总结/` 迁到标准位置 `2025/阶段总结/除夕，2024一年总结/`；主题 `_config.yml` 采用远程版本（`githubLink` 修正、`tcaptcha` 关闭）、`contact.ejs` 采用远程版本（去掉不存在的 `/css/style.css`、恢复 valine 条件加载）。仍保留本地的精简结构、文档体系与 `hexo-generator-search`；未恢复已删除的 `cyanstyle` 主题与重复副本。 |
 | 2026-10-17 | 结构整理：删除重复主题副本（约 36MB）与未启用的 `cyanstyle` 主题；新增 `.gitignore` 并重建仓库索引（6513 → 419 个受控文件）；修复站内搜索（补装 `hexo-generator-search`）；修复 `source/.nojekyll`（原为空目录）；精简 `_config.yml` 无效配置；补齐各目录说明与清单。详见 [themes/README.md](themes/README.md) 的「已移除主题」一节。 |
