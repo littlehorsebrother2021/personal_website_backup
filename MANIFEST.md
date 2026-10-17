@@ -2,30 +2,30 @@
 
 > 本文件由 `scripts/gen-manifest.mjs` 自动生成，**请勿手改**；需要刷新时在项目根执行 `npm run manifest`。
 > 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`）。
-> 生成时间：2026-10-17 20:30
+> 生成时间：2026-10-17 20:43
 
 ## 一、全站统计
 
 | 指标 | 数值 |
 | :--- | :--- |
-| 受控文件总数 | 447 |
-| 文件总体积 | 47.48 MB |
-| 目录总数 | 95 |
-| 索引中列出 | 28 个（有说明文档或有文章的目录） |
+| 受控文件总数 | 465 |
+| 文件总体积 | 61.36 MB |
+| 目录总数 | 98 |
+| 索引中列出 | 31 个（有说明文档或有文章的目录） |
 | 文章总数 | 37 |
-| 带说明文档的目录 | 27 |
+| 带说明文档的目录 | 30 |
 
 ## 二、文件类型分布
 
 | 扩展名 | 类型 | 文件数 | 体积 |
 | :--- | :--- | ---: | ---: |
-| `.png` | 图片 | 128 | 6.54 MB |
-| `.md` | Markdown | 77 | 323.7 KB |
+| `.png` | 图片 | 129 | 14.01 MB |
+| `.md` | Markdown | 81 | 336.4 KB |
 | `.ejs` | EJS 模板 | 72 | 203.3 KB |
+| `.jpg` | 图片 | 58 | 35.80 MB |
 | `.js` | JavaScript | 55 | 9.08 MB |
-| `.jpg` | 图片 | 47 | 29.41 MB |
 | `.css` | 样式表 | 28 | 736.1 KB |
-| `.yml` | YAML | 7 | 44.6 KB |
+| `.yml` | YAML | 7 | 44.1 KB |
 | `(无)` | — | 6 | 12.0 KB |
 | `.ttf` | 字体 | 6 | 639.9 KB |
 | `.json` | JSON | 4 | 213.3 KB |
@@ -34,6 +34,7 @@
 | `.html` | HTML | 2 | 110 B |
 | `.svg` | 矢量图 | 2 | 19.0 KB |
 | `.woff` | 字体 | 2 | 10.6 KB |
+| `.ps1` | — | 2 | 8.5 KB |
 | `.mjs` | JavaScript | 1 | 13.3 KB |
 | `.xml` | XML | 1 | 85 B |
 | `.gif` | 图片 | 1 | 4.1 KB |
@@ -45,34 +46,37 @@
 
 | 目录 | 说明文档 | 直属文件 | 直属子目录 | 合计文件 | 最后修改 |
 | :--- | :--- | ---: | ---: | ---: | :--- |
-| `.` | [说明](README.md) | 7 | 6 | 447 | 2026-10-17 20:30 |
-| `.github` | [说明](.github/README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
+| `.` | [说明](README.md) | 8 | 9 | 465 | 2026-10-17 20:42 |
+| `.github` | [说明](.github/README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `.vscode` | — | 1 | 0 | 1 | 2026-10-17 19:50 |
-| `scaffolds` | [说明](scaffolds/README.md) | 4 | 0 | 4 | 2026-10-17 19:55 |
-| `scripts` | [说明](scripts/README.md) | 2 | 0 | 2 | 2026-10-17 20:18 |
-| `source` | [说明](source/_README.md) | 7 | 8 | 197 | 2026-10-17 19:55 |
-| `source/_data` | [说明](source/_data/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/_posts` | [说明](source/_posts/_README.md) | 1 | 4 | 176 | 2026-10-17 19:55 |
-| `source/_posts/2023` | [说明](source/_posts/2023/_README.md) | 3 | 0 | 3 | 2026-10-17 19:55 |
-| `source/_posts/2024` | [说明](source/_posts/2024/_README.md) | 1 | 4 | 30 | 2026-10-17 19:55 |
-| `source/_posts/2024/阶段总结` | [说明](source/_posts/2024/阶段总结/_README.md) | 5 | 1 | 8 | 2026-10-17 19:55 |
-| `source/_posts/2024/生活` | [说明](source/_posts/2024/生活/_README.md) | 4 | 0 | 4 | 2026-10-17 19:55 |
-| `source/_posts/2024/学习类` | [说明](source/_posts/2024/学习类/_README.md) | 9 | 0 | 9 | 2026-10-17 19:55 |
-| `source/_posts/2024/周总结` | [说明](source/_posts/2024/周总结/_README.md) | 8 | 0 | 8 | 2026-10-17 19:55 |
-| `source/_posts/2025` | [说明](source/_posts/2025/_README.md) | 1 | 2 | 58 | 2026-10-17 19:55 |
-| `source/_posts/2025/阶段总结` | [说明](source/_posts/2025/阶段总结/_README.md) | 3 | 1 | 12 | 2026-10-17 19:55 |
-| `source/_posts/2025/学习类` | [说明](source/_posts/2025/学习类/_README.md) | 6 | 3 | 45 | 2026-10-17 19:55 |
-| `source/_posts/2026` | [说明](source/_posts/2026/_README.md) | 1 | 2 | 84 | 2026-10-17 19:55 |
-| `source/_posts/2026/生活` | [说明](source/_posts/2026/生活/_README.md) | 2 | 1 | 9 | 2026-10-17 19:55 |
-| `source/_posts/2026/STM32N6` | [说明](source/_posts/2026/STM32N6/_README.md) | 7 | 5 | 74 | 2026-10-17 19:55 |
-| `source/404` | [说明](source/404/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/about` | [说明](source/about/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/categories` | [说明](source/categories/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/contact` | [说明](source/contact/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/friends` | [说明](source/friends/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `source/tags` | [说明](source/tags/_README.md) | 2 | 0 | 2 | 2026-10-17 19:55 |
-| `themes` | [说明](themes/README.md) | 2 | 1 | 234 | 2026-10-17 19:55 |
-| `themes/hexo-theme-matery` | [说明](themes/hexo-theme-matery/README.md) | 6 | 4 | 232 | 2026-10-17 19:50 |
+| `assets` | [说明](assets/README.md) | 1 | 1 | 10 | 2026-10-17 20:41 |
+| `docs` | [说明](docs/README.md) | 2 | 0 | 2 | 2026-10-17 20:41 |
+| `scaffolds` | [说明](scaffolds/README.md) | 4 | 0 | 4 | 2026-10-17 20:30 |
+| `scripts` | [说明](scripts/README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source` | [说明](source/_README.md) | 7 | 8 | 197 | 2026-10-17 20:30 |
+| `source/_data` | [说明](source/_data/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/_posts` | [说明](source/_posts/_README.md) | 1 | 4 | 176 | 2026-10-17 20:30 |
+| `source/_posts/2023` | [说明](source/_posts/2023/_README.md) | 3 | 0 | 3 | 2026-10-17 20:30 |
+| `source/_posts/2024` | [说明](source/_posts/2024/_README.md) | 1 | 4 | 30 | 2026-10-17 20:30 |
+| `source/_posts/2024/阶段总结` | [说明](source/_posts/2024/阶段总结/_README.md) | 5 | 1 | 8 | 2026-10-17 20:40 |
+| `source/_posts/2024/生活` | [说明](source/_posts/2024/生活/_README.md) | 4 | 0 | 4 | 2026-10-17 20:30 |
+| `source/_posts/2024/学习类` | [说明](source/_posts/2024/学习类/_README.md) | 9 | 0 | 9 | 2026-10-17 20:43 |
+| `source/_posts/2024/周总结` | [说明](source/_posts/2024/周总结/_README.md) | 8 | 0 | 8 | 2026-10-17 20:30 |
+| `source/_posts/2025` | [说明](source/_posts/2025/_README.md) | 1 | 2 | 58 | 2026-10-17 20:40 |
+| `source/_posts/2025/阶段总结` | [说明](source/_posts/2025/阶段总结/_README.md) | 3 | 1 | 12 | 2026-10-17 20:40 |
+| `source/_posts/2025/学习类` | [说明](source/_posts/2025/学习类/_README.md) | 6 | 3 | 45 | 2026-10-17 20:43 |
+| `source/_posts/2026` | [说明](source/_posts/2026/_README.md) | 1 | 2 | 84 | 2026-10-17 20:30 |
+| `source/_posts/2026/生活` | [说明](source/_posts/2026/生活/_README.md) | 2 | 1 | 9 | 2026-10-17 20:30 |
+| `source/_posts/2026/STM32N6` | [说明](source/_posts/2026/STM32N6/_README.md) | 7 | 5 | 74 | 2026-10-17 20:30 |
+| `source/404` | [说明](source/404/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/about` | [说明](source/about/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/categories` | [说明](source/categories/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/contact` | [说明](source/contact/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/friends` | [说明](source/friends/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `source/tags` | [说明](source/tags/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
+| `themes` | [说明](themes/README.md) | 2 | 1 | 236 | 2026-10-17 20:30 |
+| `themes/hexo-theme-matery` | [说明](themes/hexo-theme-matery/README.md) | 6 | 4 | 234 | 2026-10-17 20:40 |
+| `tools` | [说明](tools/README.md) | 3 | 0 | 3 | 2026-10-17 20:41 |
 
 ## 四、文章索引
 

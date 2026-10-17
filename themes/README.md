@@ -38,14 +38,14 @@
 
 <!-- MANIFEST:BEGIN -->
 
-> **路径**：`themes` ｜ **直属文件** 2 ｜ **直属子目录** 1 ｜ **本目录合计** 234 个文件
+> **路径**：`themes` ｜ **直属文件** 2 ｜ **直属子目录** 1 ｜ **本目录合计** 236 个文件
 >
 > [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [hexo-theme-matery/](<hexo-theme-matery/README.md>) | 目录 | 232 个文件 | — | 2026-10-17 19:50 |
+| [hexo-theme-matery/](<hexo-theme-matery/README.md>) | 目录 | 234 个文件 | — | 2026-10-17 20:40 |
 | [.gitkeep](<.gitkeep>) | 无扩展名 | 0 B | — | 2023-10-20 21:29 |
-| [README.md](<README.md>) | Markdown | 2.9 KB | themes —— 主题目录 | 2026-10-17 20:18 |
+| [README.md](<README.md>) | Markdown | 3.0 KB | themes —— 主题目录 | 2026-10-17 20:30 |
 
 <!-- MANIFEST:END -->
