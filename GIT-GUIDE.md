@@ -1,7 +1,8 @@
 # Git 使用说明（本站专用速查）
 
 > 给「记不住 git」的自己用。**只需要记住第 1 节的 6 条命令**，其余当字典查。
-> 本仓库：Hexo 博客源码 ｜ 当前分支：`master`（建议改为 `main`）｜ 远程：尚未配置
+> 本仓库：Hexo 博客源码 ｜ 本地分支：`main` ｜ 远程：`origin` = `personal_website_backup`
+> ⚠️ **源码实际存在远程分支 `cleanup-2026-10-17` 上，远程默认分支 `main` 是另一条历史（AI 修改版），两者尚未合并。**
 
 ---
 
@@ -218,6 +219,29 @@ git add -A && git commit -m "说明" && git push
 
 ## 12. 多电脑同步方案
 
+### 12.0 本仓库当前的实际配置（2026-10-17 已落地）
+
+```
+远程 origin = https://github.com/littlehorsebrother2021/personal_website_backup.git
+
+远端分支：
+  main                  ← 另一条历史（AI 修改版，含 assets/ docs/ tools/ cyanstyle）
+  lagacy-backup         ← AI 修改前的原始版本
+  cleanup-2026-10-17    ← ★ 本次结构整理后的源码（本地 main 已推送至此）
+```
+
+**因为这个仓库的默认分支是 `main`，而源码在 `cleanup-2026-10-17` 上，所以：**
+
+| 场景 | 命令 |
+| :--- | :--- |
+| 日常提交 | `git add -A && git commit -m "说明" && git push`（当前分支已跟踪 `origin/cleanup-2026-10-17`） |
+| 日常拉取 | `git pull` |
+| **新电脑克隆** | `git clone -b cleanup-2026-10-17 https://github.com/littlehorsebrother2021/personal_website_backup.git` ← **必须带 `-b`**，否则拿到的是另一条历史的 main |
+| 查看差异 | `git diff origin/main origin/cleanup-2026-10-17 --stat` |
+
+> 若日后决定以本分支为准，可在 GitHub 上把默认分支改为 `cleanup-2026-10-17`，
+> 或把它合并进 `main`（需逐项处理 144 个文件差异）。
+
 ### 方案 A（推荐）：源码放独立仓库，Pages 仓库只收静态文件
 
 ```
@@ -284,4 +308,33 @@ git push -u origin hexo
 
 > **本项目已完成的前置工作**（两方案都需要）：
 > `.gitignore` 已就绪、`themes/` 下无嵌套 `.git`、`public/` 与 `db.json` 已排除、
-> 仓库已整理为 3 个干净提交。剩下的只有「建远程 + 首次 push」。
+> 仓库已整理为 4 个干净提交，并已推送到远程 `cleanup-2026-10-17` 分支。
+
+---
+
+## 13. 推送被 GitHub 密钥扫描拦住怎么办
+
+### 症状
+
+```
+remote: error: GH013: Repository rule violations found for refs/heads/xxx
+remote: - GITHUB PUSH PROTECTION
+remote:   Push cannot contain secrets
+remote:        —— Tencent Cloud Secret ID ——
+remote:          path: themes/hexo-theme-matery/source/libs/twikoo/twikoo.all.min.js:2
+```
+
+### 先判断是不是误报
+
+第三方 JS 库里经常有「示例字符串」被误判。本次遇到的 `AKIDBgZD...` 出现在
+`ADMIN_CONFIG_EXAMPLE` 后面，是 Twikoo 后台的**占位符示例**，不是真实凭据。
+
+### 处理办法（按推荐顺序）
+
+| 办法 | 适用 | 操作 |
+| :--- | :--- | :--- |
+| **① 放行（推荐）** | 确认是误报 | 终端提示里会给出 `https://github.com/<用户>/<仓库>/security/secret-scanning/unblock-secret/<id>` 链接，用仓库所有者账号打开 → 选择理由 → **Allow secret** → 重新 `git push` |
+| ② 排除路径 | 整个目录都是第三方库 | 在**默认分支**加 `.github/secret_scanning.yml`：`paths-ignore: ["themes/**/libs/**"]`（注意：该配置只从默认分支读取，对当前分支的推送不一定立即生效） |
+| ③ 移除文件 | 该库根本没启用 | 删除文件 → 修改引用指向 CDN → 用 `git filter-branch` 从历史中彻底删除 |
+
+> 遇到时**不要**用 `git push --force` 硬试，密钥扫描是服务端规则，force 也会被拦。
