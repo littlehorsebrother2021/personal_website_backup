@@ -1,14 +1,70 @@
-# tools —— 封面 / 图标生成脚本
+# tools —— 维护脚本
 
-> 两个 PowerShell 脚本，负责把 `assets/` 里的原始图片处理成主题需要的尺寸和编号。
+> 所有「跑一次就行」的维护脚本都放这里：清单生成、壁纸抓取、封面裁剪、logo 替换。
 
 ## 说明
 
-| 脚本 | 作用 |
-| :--- | :--- |
-| `fetch-covers.ps1` | **从网络抓取高清壁纸**：下载 → 校验 → 调用 update-covers 裁剪 → 清理多余编号，一条龙 |
-| `update-covers.ps1` | 把原始图片居中裁剪、缩放到标准尺寸，重编号后写入主题的 `medias/banner/` 与 `medias/featureimages/`，并同步主题 `_config.yml` 的 `featureImages` 列表 |
-| `replace-logo.ps1` | 把项目根的 `logo.png` 原样复制为主题站点的 favicon 与 logo（不缩放、不裁剪） |
+### ⚠️ 为什么不放在 `scripts/`
+
+Hexo 会把项目根的 `scripts/` 目录当作**插件目录**，启动时逐个 `require` 里面的文件。
+把 `README.md`、`*.mjs` 放进去会直接抛 `SyntaxError`（虽然站点还能跑，但每次 `hexo s` / `hexo g`
+都刷一堆 ERROR）。所以维护脚本统一放 `tools/`。
+
+### 脚本一览
+
+| 脚本 | 语言 | 作用 |
+| :--- | :--- | :--- |
+| `gen-manifest.mjs` | Node.js | 重新生成各目录 README 的「清单」段与根目录 `MANIFEST.md` |
+| `fetch-covers.ps1` | PowerShell | **从网络抓取高清壁纸**：下载 → 校验 → 调用 update-covers 裁剪 → 清理多余编号，一条龙 |
+| `update-covers.ps1` | PowerShell | 把原始图片居中裁剪、缩放到标准尺寸，重编号后写入主题的 `medias/banner/` 与 `medias/featureimages/`，并同步主题 `_config.yml` 的 `featureImages` 列表 |
+| `replace-logo.ps1` | PowerShell | 把项目根的 `logo.png` 原样复制为主题站点的 favicon 与 logo（不缩放、不裁剪） |
+
+### 文档清单生成器：gen-manifest.mjs
+
+```bash
+npm run manifest          # 等价于 node tools/gen-manifest.mjs
+```
+
+零第三方依赖，只用 Node 内置 `fs` / `path`。它做两件事：
+
+1. 遍历所有说明文件（`README.md` 或 `_README.md`），把
+   `<!-- MANIFEST:BEGIN -->
+
+> **路径**：`tools` ｜ **直属文件** 5 ｜ **直属子目录** 0 ｜ **本目录合计** 5 个文件
+>
+> [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
+
+| 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
+| :--- | :--- | :--- | :--- | :--- |
+| [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 15.8 KB | — | 2026-10-17 21:02 |
+| [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 13.4 KB | — | 2026-10-17 21:11 |
+| [README.md](<README.md>) | Markdown | 7.3 KB | tools —— 维护脚本 | 2026-10-17 21:12 |
+| [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-17 20:40 |
+| [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
+
+<!-- MANIFEST:END -->` 之间的内容重写成该目录的实时清单
+   （文件/子目录、类型、大小、标题、最后修改时间，并附带指向总览与上级目录的链接）。
+2. 重新生成根目录 `MANIFEST.md`：全站统计、文件类型分布、目录索引、文章索引。
+
+**规则**
+
+- 标记**之外**的文字完全不动，手写的「说明」不会被覆盖。
+- 标记**之间**的内容全由脚本覆盖，手改无效。
+- `.md` 文件的「说明」列自动取 front-matter 的 `title`，没有则取正文第一个 `#` 标题。
+- 自动跳过 `node_modules/`、`public/`、`.deploy_git/`、`.git/`、`_audit/`、`db.json`。
+
+**新增一个目录说明的步骤**
+
+1. 在该目录新建 `README.md`（`source/` 内必须用 `_README.md`）。
+2. 写标题与「说明」内容，末尾加：
+
+   ```
+   ## 清单
+   <!-- MANIFEST:BEGIN -->
+   <!-- MANIFEST:END -->
+   ```
+
+3. 执行 `npm run manifest`，清单自动填充。
 
 ### 一键换封面（推荐先看这个）
 
@@ -17,7 +73,16 @@ npm run covers
 ```
 
 依次问三个问题（来源 / 用途 / 张数），然后自动完成下载 → 裁剪 → 替换 → 构建。
-想先看效果不落盘，选「试跑」即可。等价命令行：
+想先看效果不落盘，选「试跑」即可。
+
+想跳过菜单直接带参数，要用 `--` 把参数转交给脚本（注意脚本名是 **covers**，不是 cover）：
+
+```powershell
+npm run covers -- -Source bing -Count 7 -Target banner -DryRun
+npm run covers -- -Source picsum -Count 12 -Keep -Build
+```
+
+等价的原生命令行：
 
 ```powershell
 # 必应 4K，换 9 张文章封面并构建

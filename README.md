@@ -38,9 +38,8 @@
 | `source/about/` 等 | 6 个独立页面：关于、留言、友链、标签、分类、404 | Markdown | [source/_README.md](source/_README.md) |
 | `themes/hexo-theme-matery/` | 当前启用的主题（已本地定制） | EJS / Stylus / JS / 图片 | [themes/README.md](themes/README.md) |
 | `scaffolds/` | 新建文章/页面的 front-matter 模板 | Markdown 模板 | [scaffolds/README.md](scaffolds/README.md) |
-| `scripts/` | 文档维护脚本 | Node.js (ESM) | [scripts/README.md](scripts/README.md) |
+| `tools/` | 维护脚本：清单生成、壁纸抓取、封面裁剪、logo 替换 | Node.js / PowerShell | [tools/README.md](tools/README.md) |
 | `assets/` | 封面/背景**原始素材**（不发布，仅作生成输入） | 图片 | [assets/README.md](assets/README.md) |
-| `tools/` | 封面裁剪、logo 替换脚本 | PowerShell | [tools/README.md](tools/README.md) |
 | `docs/` | 专题操作手册（评论系统、封面配置） | Markdown | [docs/README.md](docs/README.md) |
 | `.github/` | Dependabot 依赖自动升级配置 | YAML | [.github/README.md](.github/README.md) |
 | `.vscode/` | 编辑器设置 | JSON | — |
@@ -61,7 +60,7 @@
 ## 清单      ← 自动生成：目录内每个文件/子目录的类型、大小、说明、最后修改时间
    <!-- MANIFEST:BEGIN -->
 
-> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 9 ｜ **本目录合计** 451 个文件
+> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 449 个文件
 >
 > [站点总览](README.md) ｜ [全站清单](MANIFEST.md)
 
@@ -69,22 +68,21 @@
 | :--- | :--- | :--- | :--- | :--- |
 | [.github/](<.github/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [.vscode/](<.vscode>) | 目录 | 1 个文件 | — | 2026-10-17 19:50 |
-| [assets/](<assets/README.md>) | 目录 | 11 个文件 | — | 2026-10-17 21:04 |
+| [assets/](<assets/README.md>) | 目录 | 10 个文件 | — | 2026-10-17 21:04 |
 | [docs/](<docs/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:41 |
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 20:30 |
-| [scripts/](<scripts/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 20:30 |
 | [themes/](<themes/README.md>) | 目录 | 219 个文件 | — | 2026-10-17 20:30 |
-| [tools/](<tools/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 21:04 |
+| [tools/](<tools/README.md>) | 目录 | 5 个文件 | — | 2026-10-17 21:12 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 20:56 |
 | [.gitattributes](<.gitattributes>) | 无扩展名 | 592 B | — | 2026-10-17 21:01 |
 | [.gitignore](<.gitignore>) | 无扩展名 | 866 B | — | 2026-10-17 21:01 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
 | [logo.png](<logo.png>) | 图片 | 2.49 MB | — | 2026-10-17 20:40 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 20:56 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 21:11 |
 | [package-lock.json](<package-lock.json>) | JSON | 211.6 KB | 配置 / 数据 | 2026-10-17 19:52 |
-| [package.json](<package.json>) | JSON | 979 B | 配置 / 数据 | 2026-10-17 21:01 |
-| [README.md](<README.md>) | Markdown | 9.8 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:05 |
+| [package.json](<package.json>) | JSON | 964 B | 配置 / 数据 | 2026-10-17 21:11 |
+| [README.md](<README.md>) | Markdown | 9.9 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:11 |
 
 <!-- MANIFEST:END -->
 ```
@@ -92,7 +90,8 @@
 - 根目录：`README.md`（本文件，总览）+ `MANIFEST.md`（全站清单）。
 - `source/` **以外**的目录用 `README.md`。
 - `source/` **以内**的目录必须用 `_README.md` —— 下划线开头的文件会被 Hexo 的隐藏文件规则忽略，不会渲染成页面、也不会被复制进 `public/`。
-- 清单由 `scripts/gen-manifest.mjs` 扫描生成，**手改会在下次运行后被覆盖**；增删文件后执行 `npm run manifest` 即可。
+- 清单由 `tools/gen-manifest.mjs` 扫描生成，**手改会在下次运行后被覆盖**；增删文件后执行 `npm run manifest` 即可。
+- ⚠️ **不要新建 `scripts/` 目录**：Hexo 会把它当成插件目录，逐个 `require` 其中的文件，`README.md` 之类会直接报语法错误。所有维护脚本都放 `tools/`。
 
 ---
 

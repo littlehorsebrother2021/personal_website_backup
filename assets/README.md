@@ -38,14 +38,13 @@ themes/hexo-theme-matery/source/medias/featureimages/*.jpg （文章默认封面
 
 <!-- MANIFEST:BEGIN -->
 
-> **路径**：`assets` ｜ **直属文件** 1 ｜ **直属子目录** 2 ｜ **本目录合计** 11 个文件
+> **路径**：`assets` ｜ **直属文件** 1 ｜ **直属子目录** 1 ｜ **本目录合计** 10 个文件
 >
 > [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [incoming/](<incoming>) | 目录 | 1 个文件 | — | 2026-10-17 21:03 |
 | [nature/](<nature>) | 目录 | 9 个文件 | — | 2026-10-17 20:40 |
-| [README.md](<README.md>) | Markdown | 2.1 KB | assets —— 封面 / 背景素材库 | 2026-10-17 21:04 |
+| [README.md](<README.md>) | Markdown | 2.1 KB | assets —— 封面 / 背景素材库 | 2026-10-17 21:11 |
 
 <!-- MANIFEST:END -->

@@ -8,7 +8,7 @@
  *   2. 重新生成根目录的 MANIFEST.md（全站统计 + 目录索引 + 文章索引）。
  *
  * 用法：
- *   node scripts/gen-manifest.mjs      # 或在项目根执行 npm run manifest
+ *   node tools/gen-manifest.mjs       # 或在项目根执行 npm run manifest
  *
  * 约定：
  *   - 标记之间的内容全部由本脚本覆盖，手改会在下次运行后被冲掉。
@@ -31,6 +31,7 @@ const SKIP_DIRS = new Set([
   '.git',
   '_audit',
   '_acl-recovery',
+  'incoming',
 ]);
 
 /** 不参与扫描的单个文件（Hexo 缓存，已被 .gitignore 排除） */
@@ -324,10 +325,10 @@ function buildRootManifest() {
   out.push('# 全站文件清单');
   out.push('');
   out.push(
-    `> 本文件由 \`scripts/gen-manifest.mjs\` 自动生成，**请勿手改**；需要刷新时在项目根执行 \`npm run manifest\`。`
+    `> 本文件由 \`tools/gen-manifest.mjs\` 自动生成，**请勿手改**；需要刷新时在项目根执行 \`npm run manifest\`。`
   );
   out.push(
-    '> 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`）。'
+    '> 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`、`assets/incoming/`）。'
   );
   out.push(`> 生成时间：${fmtTime(new Date())}`);
   out.push('');
