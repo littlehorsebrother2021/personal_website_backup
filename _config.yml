@@ -92,8 +92,8 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
-include: 
- - .nojekyll
+include:
+  - .nojekyll
 exclude: null
 ignore: null
 
@@ -105,30 +105,26 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-
   type: git
-
-  repo: https://github.com/littlehorsebrother2021/littlehorsebrother2021.github.io.git,main
+  repo: https://github.com/littlehorsebrother2021/littlehorsebrother2021.github.io.git
+  branch: main
   ignore_hidden: false
 
+# 中文永久链接：把文章标题转成拼音（配合上方 permalink 使用）
+## 插件只读取 enable / separator 两个键，其它键无效已于 2026-10-17 清理
 permalink_pinyin:
   enable: true
-  separator: '-' # default: '-'
+  separator: '-'
 
-  postInfo:
-  date: true
-  update: true
-  wordCount: true # 设置文章字数统计为 true.
-  totalCount: true # 设置站点文章总字数统计为 true.
-  min2read: true # 阅读时长.
-  readCount: true # 阅读次数.
-
-
+# 站内搜索：主题导航栏的搜索框会请求 /search.xml
+## 由 hexo-generator-search 生成（见 package.json）
 search:
   path: search.xml
   field: post
+  format: html
+  limit: 10000
 
-# MathJax Support
+# Markdown 渲染（marked 渲染器）
 marked:
   prependRoot: true
   postAsset: true
