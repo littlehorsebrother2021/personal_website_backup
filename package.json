@@ -6,7 +6,6 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "fonts": "node tools/subset-fontawesome.mjs",
     "manifest": "node tools/gen-manifest.mjs",
     "new": "hexo new",
     "covers": "powershell -ExecutionPolicy Bypass -File tools/fetch-covers.ps1",

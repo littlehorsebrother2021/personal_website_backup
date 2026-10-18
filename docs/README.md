@@ -47,10 +47,10 @@
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [评论区与封面配置.md](<评论区与封面配置.md>) | Markdown | 3.6 KB | 评论区与封面/背景配置 | 2026-10-17 20:40 |
-| [长期运营与增长建议.md](<长期运营与增长建议.md>) | Markdown | 18.9 KB | 长期运营与增长建议 | 2026-10-18 19:17 |
+| [长期运营与增长建议.md](<长期运营与增长建议.md>) | Markdown | 19.2 KB | 长期运营与增长建议 | 2026-10-18 19:24 |
 | [ARCHITECTURE.md](<ARCHITECTURE.md>) | Markdown | 9.3 KB | 站点架构与组件说明 | 2026-10-18 18:40 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.8 KB | 全站文件清单 | 2026-10-18 19:17 |
-| [README.md](<README.md>) | Markdown | 2.9 KB | docs —— 全部文档 | 2026-10-18 19:17 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.8 KB | 全站文件清单 | 2026-10-18 19:18 |
+| [README.md](<README.md>) | Markdown | 2.9 KB | docs —— 全部文档 | 2026-10-18 19:18 |
 
 <!-- MANIFEST:END -->

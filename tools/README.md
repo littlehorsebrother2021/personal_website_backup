@@ -15,25 +15,10 @@ Hexo 会把项目根的 `scripts/` 目录当作**插件目录**，启动时逐�
 | 脚本 | 语言 | 作用 |
 | :--- | :--- | :--- |
 | `gen-manifest.mjs` | Node.js | 重新生成各目录 README 的「清单」段与 `docs/MANIFEST.md` |
-| `subset-fontawesome.mjs` | Node.js | 按实际用到的图标裁剪 Font Awesome CSS（99 KB → 约 11 KB） |
 | `optimize-images.ps1` | PowerShell | **压缩文章配图**：超过 1920px / 300KB 的图等比缩小并重新编码，默认只处理 jpg |
 | `fetch-covers.ps1` | PowerShell | **从网络抓取高清壁纸**：下载 → 校验 → 调用 update-covers 裁剪 → 清理多余编号，一条龙 |
 | `update-covers.ps1` | PowerShell | 把原始图片居中裁剪、缩放到标准尺寸，重编号后写入主题的 `medias/banner/` 与 `medias/featureimages/`，并同步主题 `_config.yml` 的 `featureImages` 列表 |
 | `replace-logo.ps1` | PowerShell | 把 `assets/logo.png` 原样复制为主题站点的 favicon 与 logo（不缩放、不裁剪） |
-
-### 图标字体子集化：subset-fontawesome.mjs
-
-主题原本引入的是 Font Awesome 全量 CSS（99 KB / 1967 条规则），而本站只用了几十个图标。
-
-```bash
-npm run build   # 先生成一次，脚本要扫描 public/ 里真实出现的图标类
-npm run fonts   # 重新生成 themes/.../libs/awesome/css/subset.css
-```
-
-- 图标来源 = `public/` 的 HTML ∪ 主题源码（`ejs/js/yml`）里出现的 `fa-*`
-  （暗色模式那种由 JS 切换的图标不会出现在静态 HTML，所以要扫源码）
-- 只保留用到的字族，字体文件只留 `woff2`（`ttf` 已删除）
-- **新增图标后如果显示成方块**：跑一次 `npm run fonts` 即可；脚本会列出「找不到的类」帮你排查
 
 ### 图片压缩：optimize-images.ps1
 
@@ -181,7 +166,7 @@ powershell -ExecutionPolicy Bypass -File tools\replace-logo.ps1 -Build
 
 <!-- MANIFEST:BEGIN -->
 
-> **路径**：`tools` ｜ **直属文件** 7 ｜ **直属子目录** 0 ｜ **本目录合计** 7 个文件
+> **路径**：`tools` ｜ **直属文件** 6 ｜ **直属子目录** 0 ｜ **本目录合计** 6 个文件
 >
 > [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
@@ -190,9 +175,8 @@ powershell -ExecutionPolicy Bypass -File tools\replace-logo.ps1 -Build
 | [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 17.0 KB | — | 2026-10-17 21:26 |
 | [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 14.3 KB | — | 2026-10-18 18:39 |
 | [optimize-images.ps1](<optimize-images.ps1>) | PS1 | 6.1 KB | — | 2026-10-18 18:26 |
-| [README.md](<README.md>) | Markdown | 8.7 KB | tools —— 维护脚本 | 2026-10-18 19:17 |
+| [README.md](<README.md>) | Markdown | 7.9 KB | tools —— 维护脚本 | 2026-10-18 19:23 |
 | [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-18 18:38 |
-| [subset-fontawesome.mjs](<subset-fontawesome.mjs>) | JavaScript | 5.2 KB | — | 2026-10-18 19:16 |
 | [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
 
 <!-- MANIFEST:END -->

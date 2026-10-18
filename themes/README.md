@@ -15,14 +15,17 @@
 | `hexo-theme-matery/languages/` | 多语言文案，`zh-CN.yml` 为中文 |
 | `hexo-theme-matery/README.md`、`README_CN.md`、`CHANGELOG.md` | 主题上游文档 |
 
-### 性能相关的两处本地改造（2026-10-18）
+### 性能相关的本地改造（2026-10-18）
 
 | 改动 | 位置 | 说明 |
 | :--- | :--- | :--- |
-| 图标字体子集化 | source/libs/awesome/css/subset.css | 只保留用到的图标（99 KB → 11 KB）；字体只留 woff2。新增图标后跑 
-pm run fonts 重新生成 |
-| 图片懒加载 + 宽高 | scripts/lazy-images.js | 给正文图片加 loading="lazy" 与 width/height，减少 CLS。注意这是「Hexo 脚本」（用注入的全局 hexo），不是普通模块 |
-| 不加载客户端 Prism | layout/_partial/codeblock.ejs | 代码在构建时已由 prismjs.preprocess 高亮，浏览器端不必再跑 568 KB 的 prism.min.js；CSS 仍由 post-detail.ejs 加载 |
+| 图片懒加载 + 宽高 | `scripts/lazy-images.js` | 给正文图片加 `loading="lazy"` 与 `width/height`，减少 CLS。注意这是「Hexo 脚本」（用注入的全局 `hexo`），不是普通模块 |
+| 不加载客户端 Prism | `layout/_partial/codeblock.ejs` | 代码在构建时已由 `prismjs.preprocess` 高亮，浏览器端不必再跑 568 KB 的 `prism.min.js`；CSS 仍由 `post-detail.ejs` 加载 |
+
+> **关于图标子集化（已回滚）**：2026-10-18 曾把 Font Awesome 裁成 `subset.css`（99 KB → 11 KB），
+> 但它是**新文件名**——一旦部署或 CDN 缓存有任何一步没同步，页面引用了它、文件却不在，
+> 全站图标（搜索、箭头、暗色模式、社交）会一起消失。为避免这种「一个文件 404 拖垮全站」的脆弱性，
+> 已恢复 `all.min.css` + 完整字体。图标体积的优化留到换主题时再做。
 
 ### 重要约定
 
@@ -47,14 +50,14 @@ pm run fonts 重新生成 |
 
 <!-- MANIFEST:BEGIN -->
 
-> **路径**：`themes` ｜ **直属文件** 2 ｜ **直属子目录** 1 ｜ **本目录合计** 213 个文件
+> **路径**：`themes` ｜ **直属文件** 2 ｜ **直属子目录** 1 ｜ **本目录合计** 216 个文件
 >
 > [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [hexo-theme-matery/](<hexo-theme-matery/README.md>) | 目录 | 211 个文件 | — | 2026-10-17 21:03 |
+| [hexo-theme-matery/](<hexo-theme-matery/README.md>) | 目录 | 214 个文件 | — | 2026-10-17 21:03 |
 | [.gitkeep](<.gitkeep>) | 无扩展名 | 0 B | — | 2023-10-20 21:29 |
-| [README.md](<README.md>) | Markdown | 3.7 KB | themes —— 主题目录 | 2026-10-18 19:17 |
+| [README.md](<README.md>) | Markdown | 4.0 KB | themes —— 主题目录 | 2026-10-18 19:23 |
 
 <!-- MANIFEST:END -->
