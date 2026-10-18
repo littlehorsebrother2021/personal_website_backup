@@ -135,6 +135,7 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-18 | **首屏性能优化（建议文档 §4.2 的四项全部落地）**：① 关闭音乐播放器（`music.enable: false`，省 58 KB）；② 移除客户端 `prism.min.js`（568 KB）——代码在构建时已由 `prismjs.preprocess` 预高亮，浏览器端再跑一遍毫无作用，样式表保留；③ Font Awesome 子集化，`all.min.css` 99 KB → 11 KB，字体只留 woff2（共省约 720 KB），新增 `tools/subset-fontawesome.mjs` + `npm run fonts`；④ 新增主题插件 `scripts/lazy-images.js`，给正文图片加 `loading="lazy"` 并按图片文件头补 `width/height`（减少 CLS）。实测：**首页 JS/CSS 919 KB → 756 KB，文章页 1574 KB → 846 KB（−46%）**。 |
 | 2026-10-18 | **精简主目录**：把 `ARCHITECTURE.md`、`GIT-GUIDE.md`、`MANIFEST.md` 全部移入 `docs/`，`logo.png` 移入 `assets/`（`replace-logo.ps1` 默认路径同步修改），删除已无意义的 `.vscode/`（唯一设置 `git.ignoreLimitWarning` 是因仓库过大而加的，现已不需要）。根目录现在只剩 `README.md` 一个文档 + 若干必需配置。`gen-manifest.mjs` 已适配新位置。 |
 | 2026-10-18 | 继续瘦身：删除主题里**零引用**的库存图 `themes/…/source/medias/images/`（3 张 / 1 MB）；`Dependabot` 改为每周检查、PR 上限 5，并**屏蔽 `hexo` 与 `hexo-renderer-*` 的大版本自动 PR**；新增根目录 `ARCHITECTURE.md`（组件构成与数据流），并重新生成全部目录索引。禁用的 mermaid / gitalk / twikoo 三个库（6.1 MB）按你的要求保持原样。 |
 | 2026-10-18 | **体积优化与功能性修复**：① 自定义 404 页面此前从未生效（输出在 `404/index.html`，而 GitHub Pages 只认根目录 `404.html`），已用 `permalink: 404.html` 修正；② favicon / logo 三份相同的 2048×2048 PNG 各 2.5 MB，已分别缩到 192 / 256 / 512，共省 7.2 MB；③ 新增 `tools/optimize-images.ps1` + `npm run optimize`，把 9 张 3000~4600px 的照片压到 1920px、质量 85，**25.6 MB → 4.0 MB**；站点产物体积 **54.8 MB → 28.4 MB**。 |

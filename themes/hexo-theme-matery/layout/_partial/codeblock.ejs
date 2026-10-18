@@ -1,10 +1,20 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.codeblock) %>"></script>
 
-<% if (config.prismjs && config.prismjs.enable) { %>
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.prism) %>"></script>
-<% } %>
+<%#
+  不加载客户端 prism.min.js（568 KB）。
+  原因：站点开启了 hexo 的 prismjs.preprocess，代码在构建时就已经被高亮成
+  span.token，行号也预渲染成 .line-numbers-rows，浏览器端再跑一遍 Prism 没有作用。
+  样式仍由 post-detail.ejs 里的 prism.min.css 提供。
+
+  注意两点：
+  1. 这里必须用 EJS 注释而不是 HTML 注释，否则每个页面都会输出一段说明文字；
+  2. 注释正文里不能出现 EJS 的定界符，也不要把真实的 script 标签写进注释 ——
+     EJS 连 HTML 注释里的标签也会执行，之前就是因为把示例写进注释，
+     导致 prism.min.js 一直被加载。
+
+  若日后关闭 preprocess，请手动加回对 theme.libs.js.prism 的脚本引用。
+%>
 
 <!-- 代码语言 -->
 <% if (theme.code.lang) { %>

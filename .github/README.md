@@ -41,6 +41,6 @@
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [dependabot.yml](<dependabot.yml>) | YAML | 625 B | 配置 / 数据 | 2026-10-18 18:31 |
-| [README.md](<README.md>) | Markdown | 2.0 KB | .github —— GitHub 自动化配置 | 2026-10-18 18:39 |
+| [README.md](<README.md>) | Markdown | 2.0 KB | .github —— GitHub 自动化配置 | 2026-10-18 19:17 |
 
 <!-- MANIFEST:END -->

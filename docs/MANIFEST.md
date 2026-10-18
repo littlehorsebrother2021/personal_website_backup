@@ -2,14 +2,14 @@
 
 > 本文件由 `tools/gen-manifest.mjs` 自动生成，**请勿手改**；需要刷新时在项目根执行 `npm run manifest`。
 > 统计范围：纳入版本控制的文件（自动排除 `node_modules/`、`public/`、`.deploy_git/`、`db.json`、`_audit/`、`assets/incoming/`）。
-> 生成时间：2026-10-18 18:40
+> 生成时间：2026-10-18 19:18
 
 ## 一、全站统计
 
 | 指标 | 数值 |
 | :--- | :--- |
 | 受控文件总数 | 446 |
-| 文件总体积 | 30.54 MB |
+| 文件总体积 | 29.97 MB |
 | 目录总数 | 95 |
 | 索引中列出 | 29 个（有说明文档或有文章的目录） |
 | 文章总数 | 37 |
@@ -20,25 +20,25 @@
 | 扩展名 | 类型 | 文件数 | 体积 |
 | :--- | :--- | ---: | ---: |
 | `.png` | 图片 | 129 | 7.01 MB |
-| `.md` | Markdown | 81 | 355.3 KB |
-| `.ejs` | EJS 模板 | 72 | 203.3 KB |
-| `.js` | JavaScript | 55 | 9.08 MB |
+| `.md` | Markdown | 82 | 376.6 KB |
+| `.ejs` | EJS 模板 | 72 | 203.9 KB |
+| `.js` | JavaScript | 56 | 9.08 MB |
 | `.jpg` | 图片 | 37 | 11.94 MB |
-| `.css` | 样式表 | 28 | 736.1 KB |
+| `.css` | 样式表 | 29 | 746.9 KB |
 | `(无)` | — | 7 | 12.7 KB |
-| `.yml` | YAML | 7 | 43.9 KB |
-| `.ttf` | 字体 | 6 | 639.9 KB |
+| `.yml` | YAML | 7 | 44.0 KB |
 | `.woff2` | 字体 | 4 | 282.0 KB |
 | `.ps1` | — | 4 | 31.5 KB |
-| `.json` | JSON | 3 | 209.1 KB |
+| `.json` | JSON | 3 | 209.2 KB |
 | `.txt` | 文本 | 3 | 3.0 KB |
 | `.html` | HTML | 2 | 110 B |
 | `.svg` | 矢量图 | 2 | 19.0 KB |
+| `.ttf` | 字体 | 2 | 13.4 KB |
 | `.woff` | 字体 | 2 | 10.6 KB |
+| `.mjs` | JavaScript | 2 | 19.5 KB |
 | `.xml` | XML | 1 | 85 B |
 | `.gif` | 图片 | 1 | 4.1 KB |
 | `.eot` | 字体 | 1 | 9.4 KB |
-| `.mjs` | JavaScript | 1 | 14.3 KB |
 
 ## 三、目录索引
 
@@ -46,10 +46,10 @@
 
 | 目录 | 说明文档 | 直属文件 | 直属子目录 | 合计文件 | 最后修改 |
 | :--- | :--- | ---: | ---: | ---: | :--- |
-| `.` | [说明](../README.md) | 6 | 7 | 446 | 2026-10-18 18:40 |
+| `.` | [说明](../README.md) | 6 | 7 | 446 | 2026-10-18 19:18 |
 | `.github` | [说明](../.github/README.md) | 2 | 0 | 2 | 2026-10-18 18:31 |
 | `assets` | [说明](../assets/README.md) | 2 | 1 | 11 | 2026-10-18 18:36 |
-| `docs` | [说明](README.md) | 5 | 0 | 5 | 2026-10-18 18:37 |
+| `docs` | [说明](README.md) | 6 | 0 | 6 | 2026-10-18 18:45 |
 | `scaffolds` | [说明](../scaffolds/README.md) | 4 | 0 | 4 | 2026-10-17 20:30 |
 | `source` | [说明](../source/_README.md) | 7 | 8 | 197 | 2026-10-17 20:30 |
 | `source/_data` | [说明](../source/_data/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
@@ -72,9 +72,9 @@
 | `source/contact` | [说明](../source/contact/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `source/friends` | [说明](../source/friends/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
 | `source/tags` | [说明](../source/tags/_README.md) | 2 | 0 | 2 | 2026-10-17 20:30 |
-| `themes` | [说明](../themes/README.md) | 2 | 1 | 215 | 2026-10-17 20:30 |
-| `themes/hexo-theme-matery` | [说明](../themes/hexo-theme-matery/README.md) | 6 | 4 | 213 | 2026-10-17 21:03 |
-| `tools` | [说明](../tools/README.md) | 6 | 0 | 6 | 2026-10-18 18:39 |
+| `themes` | [说明](../themes/README.md) | 2 | 1 | 213 | 2026-10-17 20:30 |
+| `themes/hexo-theme-matery` | [说明](../themes/hexo-theme-matery/README.md) | 6 | 4 | 211 | 2026-10-17 21:03 |
+| `tools` | [说明](../tools/README.md) | 7 | 0 | 7 | 2026-10-18 19:17 |
 
 ## 四、文章索引
 
