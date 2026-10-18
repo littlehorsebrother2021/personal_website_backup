@@ -36,7 +36,7 @@
 | `source/_posts/` | 文章正文，按 `年份/分类/` 归档 | Markdown + 图片 | [source/_posts/_README.md](source/_posts/_README.md) |
 | `source/_data/` | 页面引用的结构化数据（友链等） | JSON | [source/_data/_README.md](source/_data/_README.md) |
 | `source/about/` 等 | 6 个独立页面：关于、留言、友链、标签、分类、404 | Markdown | [source/_README.md](source/_README.md) |
-| `themes/hexo-theme-matery/` | 当前启用的主题（已本地定制） | EJS / Stylus / JS / 图片 | [themes/README.md](themes/README.md) |
+| `themes/hexo-theme-matery/` | 当前启用的主题（已本地定制，纯 CSS 无 Stylus） | EJS / CSS / JS / 图片 | [themes/README.md](themes/README.md) |
 | `scaffolds/` | 新建文章/页面的 front-matter 模板 | Markdown 模板 | [scaffolds/README.md](scaffolds/README.md) |
 | `tools/` | 维护脚本：清单生成、壁纸抓取、封面裁剪、logo 替换 | Node.js / PowerShell | [tools/README.md](tools/README.md) |
 | `assets/` | 封面/背景**原始素材**（不发布，仅作生成输入） | 图片 | [assets/README.md](assets/README.md) |
@@ -80,9 +80,9 @@
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
 | [logo.png](<logo.png>) | 图片 | 2.49 MB | — | 2026-10-17 20:40 |
 | [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 21:26 |
-| [package-lock.json](<package-lock.json>) | JSON | 211.6 KB | 配置 / 数据 | 2026-10-17 19:52 |
-| [package.json](<package.json>) | JSON | 964 B | 配置 / 数据 | 2026-10-17 21:11 |
-| [README.md](<README.md>) | Markdown | 10.3 KB | 小马哥个人博客 · 站点源码 | 2026-10-17 21:26 |
+| [package-lock.json](<package-lock.json>) | JSON | 207.4 KB | 配置 / 数据 | 2026-10-18 08:48 |
+| [package.json](<package.json>) | JSON | 926 B | 配置 / 数据 | 2026-10-18 08:47 |
+| [README.md](<README.md>) | Markdown | 10.9 KB | 小马哥个人博客 · 站点源码 | 2026-10-18 08:49 |
 
 <!-- MANIFEST:END -->
 ```
@@ -136,6 +136,7 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-18 | 处理 Dependabot 的 4 个升级 PR：**合并** `hexo-generator-index` 3.0.0 → 4.0.0（产物零差异）；**移除** `hexo-renderer-stylus`（项目里没有任何 `.styl` 文件，纯死重量，连带去掉 stylus/nib 共 11 个包）；**驳回** `hexo` 8.1.2 与 `hexo-renderer-marked` 7.0.1。原因：Hexo 8 把语法高亮改成插件注册制、默认 highlight.js，而主题模板仍按 `config.prismjs.enable` 加载 Prism 资源、主题 CSS 也没有 highlight.js 规则，升级会导致代码块样式错乱；且 hexo 8 要求 Node ≥ 20.19。实测详见会话记录。 |
 | 2026-10-17 | 用 `npm run covers` 换入新的文章封面（8 张）与站点背景（7 张）。同时修掉脚本 bug：`banner` 场景下 `-Keep` 会把新图排到 7 号之后永不显示，现已忽略该组合并强制背景只留 7 张；替换成功后自动清理下载的原始大图（`-KeepOriginals` 可保留）。 |
 | 2026-10-17 | **新增 `tools/fetch-covers.ps1` + `npm run covers`**：可从必应（4K）或 Picsum 抓取壁纸，交互式选来源/用途/张数，自动下载校验、裁剪替换、清理多余编号、可选构建；原图存 `assets/incoming/` 且不入库。同时清理 17 张孤儿图（featureimages 9-23、banner 7-8，主题只用到 0-8 与 0-6）、补 `.gitattributes` 统一换行符。 |
 | 2026-10-17 | **合并远程 `main`（2026-08-01 备份）**：取回封面/背景定制图（banner 0-8、featureimages 0-8、logo、favicon）、`assets/nature` 素材、`tools/` 两个生成脚本、`docs/评论区与封面配置.md`、根 `logo.png`；修正 3 篇文章的图片引用（原 `./image/...` 写法渲染后是死链），并把 `2025/阶段总结/image/除夕，2024一年总结/` 迁到标准位置 `2025/阶段总结/除夕，2024一年总结/`；主题 `_config.yml` 采用远程版本（`githubLink` 修正、`tcaptcha` 关闭）、`contact.ejs` 采用远程版本（去掉不存在的 `/css/style.css`、恢复 valine 条件加载）。仍保留本地的精简结构、文档体系与 `hexo-generator-search`；未恢复已删除的 `cyanstyle` 主题与重复副本。 |
