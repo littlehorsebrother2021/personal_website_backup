@@ -18,6 +18,7 @@
 | 部署 | `npm run deploy` | 会自动提交并推送到 GitHub Pages 仓库 |
 | 刷新文档清单 | `npm run manifest` | 重写各目录 README 的「清单」段与根目录 `MANIFEST.md` |
 | 换文章封面 | `npm run covers` | 从必应 / Picsum 抓 4K 壁纸，自动裁剪并替换（见 [tools/README.md](tools/README.md)） |
+| 压缩配图 | `npm run optimize -- -DryRun` | 先看能省多少；去掉 `-DryRun` 才真正压（原图可从 git 还原） |
 
 > **本机提示**：`npm` 可能不在 PATH 中，此时用 Node 直接调用即可，例如
 > `node node_modules/hexo-cli/bin/hexo generate`。
@@ -60,7 +61,7 @@
 ## 清单      ← 自动生成：目录内每个文件/子目录的类型、大小、说明、最后修改时间
    <!-- MANIFEST:BEGIN -->
 
-> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 448 个文件
+> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 449 个文件
 >
 > [站点总览](README.md) ｜ [全站清单](MANIFEST.md)
 
@@ -73,16 +74,16 @@
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 20:30 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 20:30 |
 | [themes/](<themes/README.md>) | 目录 | 218 个文件 | — | 2026-10-17 20:30 |
-| [tools/](<tools/README.md>) | 目录 | 5 个文件 | — | 2026-10-17 21:26 |
+| [tools/](<tools/README.md>) | 目录 | 6 个文件 | — | 2026-10-18 18:26 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 20:56 |
 | [.gitattributes](<.gitattributes>) | 无扩展名 | 592 B | — | 2026-10-17 21:01 |
 | [.gitignore](<.gitignore>) | 无扩展名 | 866 B | — | 2026-10-17 21:01 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
-| [logo.png](<logo.png>) | 图片 | 2.49 MB | — | 2026-10-17 20:40 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-17 21:26 |
+| [logo.png](<logo.png>) | 图片 | 324.8 KB | — | 2026-10-18 18:24 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-18 08:49 |
 | [package-lock.json](<package-lock.json>) | JSON | 207.4 KB | 配置 / 数据 | 2026-10-18 08:48 |
-| [package.json](<package.json>) | JSON | 926 B | 配置 / 数据 | 2026-10-18 08:47 |
-| [README.md](<README.md>) | Markdown | 10.9 KB | 小马哥个人博客 · 站点源码 | 2026-10-18 08:49 |
+| [package.json](<package.json>) | JSON | 1012 B | 配置 / 数据 | 2026-10-18 18:26 |
+| [README.md](<README.md>) | Markdown | 11.6 KB | 小马哥个人博客 · 站点源码 | 2026-10-18 18:27 |
 
 <!-- MANIFEST:END -->
 ```
@@ -136,6 +137,7 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-18 | **体积优化与功能性修复**：① 自定义 404 页面此前从未生效（输出在 `404/index.html`，而 GitHub Pages 只认根目录 `404.html`），已用 `permalink: 404.html` 修正；② favicon / logo 三份相同的 2048×2048 PNG 各 2.5 MB，已分别缩到 192 / 256 / 512，共省 7.2 MB；③ 新增 `tools/optimize-images.ps1` + `npm run optimize`，把 9 张 3000~4600px 的照片压到 1920px、质量 85，**25.6 MB → 4.0 MB**；站点产物体积 **54.8 MB → 28.4 MB**。 |
 | 2026-10-18 | 处理 Dependabot 的 4 个升级 PR：**合并** `hexo-generator-index` 3.0.0 → 4.0.0（产物零差异）；**移除** `hexo-renderer-stylus`（项目里没有任何 `.styl` 文件，纯死重量，连带去掉 stylus/nib 共 11 个包）；**驳回** `hexo` 8.1.2 与 `hexo-renderer-marked` 7.0.1。原因：Hexo 8 把语法高亮改成插件注册制、默认 highlight.js，而主题模板仍按 `config.prismjs.enable` 加载 Prism 资源、主题 CSS 也没有 highlight.js 规则，升级会导致代码块样式错乱；且 hexo 8 要求 Node ≥ 20.19。实测详见会话记录。 |
 | 2026-10-17 | 用 `npm run covers` 换入新的文章封面（8 张）与站点背景（7 张）。同时修掉脚本 bug：`banner` 场景下 `-Keep` 会把新图排到 7 号之后永不显示，现已忽略该组合并强制背景只留 7 张；替换成功后自动清理下载的原始大图（`-KeepOriginals` 可保留）。 |
 | 2026-10-17 | **新增 `tools/fetch-covers.ps1` + `npm run covers`**：可从必应（4K）或 Picsum 抓取壁纸，交互式选来源/用途/张数，自动下载校验、裁剪替换、清理多余编号、可选构建；原图存 `assets/incoming/` 且不入库。同时清理 17 张孤儿图（featureimages 9-23、banner 7-8，主题只用到 0-8 与 0-6）、补 `.gitattributes` 统一换行符。 |

@@ -9,6 +9,7 @@
     "manifest": "node tools/gen-manifest.mjs",
     "new": "hexo new",
     "covers": "powershell -ExecutionPolicy Bypass -File tools/fetch-covers.ps1",
+    "optimize": "powershell -ExecutionPolicy Bypass -File tools/optimize-images.ps1",
     "server": "hexo server"
   },
   "hexo": {

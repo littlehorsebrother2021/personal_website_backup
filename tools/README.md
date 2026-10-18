@@ -15,9 +15,32 @@ Hexo 会把项目根的 `scripts/` 目录当作**插件目录**，启动时逐�
 | 脚本 | 语言 | 作用 |
 | :--- | :--- | :--- |
 | `gen-manifest.mjs` | Node.js | 重新生成各目录 README 的「清单」段与根目录 `MANIFEST.md` |
+| `optimize-images.ps1` | PowerShell | **压缩文章配图**：超过 1920px / 300KB 的图等比缩小并重新编码，默认只处理 jpg |
 | `fetch-covers.ps1` | PowerShell | **从网络抓取高清壁纸**：下载 → 校验 → 调用 update-covers 裁剪 → 清理多余编号，一条龙 |
 | `update-covers.ps1` | PowerShell | 把原始图片居中裁剪、缩放到标准尺寸，重编号后写入主题的 `medias/banner/` 与 `medias/featureimages/`，并同步主题 `_config.yml` 的 `featureImages` 列表 |
 | `replace-logo.ps1` | PowerShell | 把项目根的 `logo.png` 原样复制为主题站点的 favicon 与 logo（不缩放、不裁剪） |
+
+### 图片压缩：optimize-images.ps1
+
+```powershell
+# 先看会改什么、能省多少（不动文件）
+npm run optimize -- -DryRun
+
+# 真正执行
+npm run optimize
+
+# 更激进
+tools\optimize-images.ps1 -MaxWidth 1600 -Quality 80
+```
+
+规则：宽度超过 `-MaxWidth`（默认 1920）才缩放；体积超过 `-MinBytes`（默认 300KB）才重编码；
+重编码后没省下 5% 以上就保持原样；PNG 默认跳过（截图本来就小），加 `-IncludePng` 才处理。
+
+**原图不另存** —— git 历史就是备份，压坏了随时还原：
+
+```bash
+git checkout <压缩前的提交> -- 图片路径
+```
 
 ### 文档清单生成器：gen-manifest.mjs
 
@@ -30,7 +53,7 @@ npm run manifest          # 等价于 node tools/gen-manifest.mjs
 1. 遍历所有说明文件（`README.md` 或 `_README.md`），把
    `<!-- MANIFEST:BEGIN -->
 
-> **路径**：`tools` ｜ **直属文件** 5 ｜ **直属子目录** 0 ｜ **本目录合计** 5 个文件
+> **路径**：`tools` ｜ **直属文件** 6 ｜ **直属子目录** 0 ｜ **本目录合计** 6 个文件
 >
 > [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
 
@@ -38,7 +61,8 @@ npm run manifest          # 等价于 node tools/gen-manifest.mjs
 | :--- | :--- | :--- | :--- | :--- |
 | [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 17.0 KB | — | 2026-10-17 21:26 |
 | [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 13.4 KB | — | 2026-10-17 21:11 |
-| [README.md](<README.md>) | Markdown | 7.7 KB | tools —— 维护脚本 | 2026-10-17 21:26 |
+| [optimize-images.ps1](<optimize-images.ps1>) | PS1 | 6.1 KB | — | 2026-10-18 18:26 |
+| [README.md](<README.md>) | Markdown | 8.4 KB | tools —— 维护脚本 | 2026-10-18 18:26 |
 | [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-17 20:40 |
 | [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
 
