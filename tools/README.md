@@ -62,7 +62,7 @@ npm run manifest          # 等价于 node tools/gen-manifest.mjs
 | [fetch-covers.ps1](<fetch-covers.ps1>) | PS1 | 17.0 KB | — | 2026-10-17 21:26 |
 | [gen-manifest.mjs](<gen-manifest.mjs>) | JavaScript | 13.4 KB | — | 2026-10-17 21:11 |
 | [optimize-images.ps1](<optimize-images.ps1>) | PS1 | 6.1 KB | — | 2026-10-18 18:26 |
-| [README.md](<README.md>) | Markdown | 8.4 KB | tools —— 维护脚本 | 2026-10-18 18:26 |
+| [README.md](<README.md>) | Markdown | 8.5 KB | tools —— 维护脚本 | 2026-10-18 18:27 |
 | [replace-logo.ps1](<replace-logo.ps1>) | PS1 | 2.0 KB | — | 2026-10-17 20:40 |
 | [update-covers.ps1](<update-covers.ps1>) | PS1 | 6.5 KB | — | 2026-10-17 20:40 |
 

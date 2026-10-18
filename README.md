@@ -32,6 +32,7 @@
 | `_config.yml` | 站点主配置（标题、链接格式、插件、部署） | YAML | 见下方「配置要点」 |
 | `package.json` / `package-lock.json` | 依赖与命令定义 | JSON | 本文件 |
 | `MANIFEST.md` | 全站统计、目录索引、文章索引 | Markdown | 自动生成 |
+| `ARCHITECTURE.md` | **架构说明**：站点由哪些组件构成、数据怎么流动、改动该动哪个文件 | Markdown | 本文件 |
 | `GIT-GUIDE.md` | **Git 速查手册**：常用命令、撤销回退、报错处理、多电脑同步方案 | Markdown | 本文件 |
 | `source/` | 站点内容根目录 | Markdown / 图片 / XML | [source/_README.md](source/_README.md) |
 | `source/_posts/` | 文章正文，按 `年份/分类/` 归档 | Markdown + 图片 | [source/_posts/_README.md](source/_posts/_README.md) |
@@ -61,34 +62,35 @@
 ## 清单      ← 自动生成：目录内每个文件/子目录的类型、大小、说明、最后修改时间
    <!-- MANIFEST:BEGIN -->
 
-> **路径**：`.` ｜ **直属文件** 9 ｜ **直属子目录** 8 ｜ **本目录合计** 449 个文件
+> **路径**：`.` ｜ **直属文件** 10 ｜ **直属子目录** 8 ｜ **本目录合计** 447 个文件
 >
 > [站点总览](README.md) ｜ [全站清单](MANIFEST.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [.github/](<.github/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
+| [.github/](<.github/README.md>) | 目录 | 2 个文件 | — | 2026-10-18 18:31 |
 | [.vscode/](<.vscode>) | 目录 | 1 个文件 | — | 2026-10-17 19:50 |
 | [assets/](<assets/README.md>) | 目录 | 10 个文件 | — | 2026-10-17 21:04 |
 | [docs/](<docs/README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:41 |
 | [scaffolds/](<scaffolds/README.md>) | 目录 | 4 个文件 | — | 2026-10-17 20:30 |
 | [source/](<source/_README.md>) | 目录 | 197 个文件 | — | 2026-10-17 20:30 |
-| [themes/](<themes/README.md>) | 目录 | 218 个文件 | — | 2026-10-17 20:30 |
+| [themes/](<themes/README.md>) | 目录 | 215 个文件 | — | 2026-10-17 20:30 |
 | [tools/](<tools/README.md>) | 目录 | 6 个文件 | — | 2026-10-18 18:26 |
 | [_config.yml](<_config.yml>) | YAML | 3.4 KB | 配置 / 数据 | 2026-10-17 20:56 |
 | [.gitattributes](<.gitattributes>) | 无扩展名 | 592 B | — | 2026-10-17 21:01 |
 | [.gitignore](<.gitignore>) | 无扩展名 | 866 B | — | 2026-10-17 21:01 |
+| [ARCHITECTURE.md](<ARCHITECTURE.md>) | Markdown | 9.2 KB | 站点架构与组件说明 | 2026-10-18 18:32 |
 | [GIT-GUIDE.md](<GIT-GUIDE.md>) | Markdown | 13.5 KB | Git 使用说明（本站专用速查） | 2026-10-17 20:56 |
 | [logo.png](<logo.png>) | 图片 | 324.8 KB | — | 2026-10-18 18:24 |
-| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-18 08:49 |
+| [MANIFEST.md](<MANIFEST.md>) | Markdown | 10.7 KB | 全站文件清单 | 2026-10-18 18:27 |
 | [package-lock.json](<package-lock.json>) | JSON | 207.4 KB | 配置 / 数据 | 2026-10-18 08:48 |
 | [package.json](<package.json>) | JSON | 1012 B | 配置 / 数据 | 2026-10-18 18:26 |
-| [README.md](<README.md>) | Markdown | 11.6 KB | 小马哥个人博客 · 站点源码 | 2026-10-18 18:27 |
+| [README.md](<README.md>) | Markdown | 12.2 KB | 小马哥个人博客 · 站点源码 | 2026-10-18 18:32 |
 
 <!-- MANIFEST:END -->
 ```
 
-- 根目录：`README.md`（本文件，总览）+ `MANIFEST.md`（全站清单）。
+- 根目录：`README.md`（本文件，总览）+ `MANIFEST.md`（全站清单）+ `ARCHITECTURE.md`（组件与数据流）。
 - `source/` **以外**的目录用 `README.md`。
 - `source/` **以内**的目录必须用 `_README.md` —— 下划线开头的文件会被 Hexo 的隐藏文件规则忽略，不会渲染成页面、也不会被复制进 `public/`。
 - 清单由 `tools/gen-manifest.mjs` 扫描生成，**手改会在下次运行后被覆盖**；增删文件后执行 `npm run manifest` 即可。
@@ -137,6 +139,7 @@
 
 | 日期 | 变更 |
 | :--- | :--- |
+| 2026-10-18 | 继续瘦身：删除主题里**零引用**的库存图 `themes/…/source/medias/images/`（3 张 / 1 MB）；`Dependabot` 改为每周检查、PR 上限 5，并**屏蔽 `hexo` 与 `hexo-renderer-*` 的大版本自动 PR**；新增根目录 `ARCHITECTURE.md`（组件构成与数据流），并重新生成全部目录索引。禁用的 mermaid / gitalk / twikoo 三个库（6.1 MB）按你的要求保持原样。 |
 | 2026-10-18 | **体积优化与功能性修复**：① 自定义 404 页面此前从未生效（输出在 `404/index.html`，而 GitHub Pages 只认根目录 `404.html`），已用 `permalink: 404.html` 修正；② favicon / logo 三份相同的 2048×2048 PNG 各 2.5 MB，已分别缩到 192 / 256 / 512，共省 7.2 MB；③ 新增 `tools/optimize-images.ps1` + `npm run optimize`，把 9 张 3000~4600px 的照片压到 1920px、质量 85，**25.6 MB → 4.0 MB**；站点产物体积 **54.8 MB → 28.4 MB**。 |
 | 2026-10-18 | 处理 Dependabot 的 4 个升级 PR：**合并** `hexo-generator-index` 3.0.0 → 4.0.0（产物零差异）；**移除** `hexo-renderer-stylus`（项目里没有任何 `.styl` 文件，纯死重量，连带去掉 stylus/nib 共 11 个包）；**驳回** `hexo` 8.1.2 与 `hexo-renderer-marked` 7.0.1。原因：Hexo 8 把语法高亮改成插件注册制、默认 highlight.js，而主题模板仍按 `config.prismjs.enable` 加载 Prism 资源、主题 CSS 也没有 highlight.js 规则，升级会导致代码块样式错乱；且 hexo 8 要求 Node ≥ 20.19。实测详见会话记录。 |
 | 2026-10-17 | 用 `npm run covers` 换入新的文章封面（8 张）与站点背景（7 张）。同时修掉脚本 bug：`banner` 场景下 `-Keep` 会把新图排到 7 号之后永不显示，现已忽略该组合并强制背景只留 7 张；替换成功后自动清理下载的原始大图（`-KeepOriginals` 可保留）。 |

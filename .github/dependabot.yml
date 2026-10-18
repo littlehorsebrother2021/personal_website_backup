@@ -1,7 +1,18 @@
 version: 2
+
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    # 大版本改动一律不自动提 PR，需要人工评估后手动升级。
+    # 原因见 .github/README.md：hexo 主版本会改变语法高亮器等核心行为，
+    # 主题和插件未必跟得上，自动 PR 只会制造噪音。
+    ignore:
+      - dependency-name: "hexo"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "hexo-renderer-*"
+        update-types: ["version-update:semver-major"]
