@@ -15,11 +15,11 @@
 
 > **路径**：`source/about` ｜ **直属文件** 2 ｜ **直属子目录** 0 ｜ **本目录合计** 2 个文件
 >
-> [站点总览](../../README.md) ｜ [全站清单](../../MANIFEST.md) ｜ [上级目录](../_README.md)
+> [站点总览](../../README.md) ｜ [全站清单](../../docs/MANIFEST.md) ｜ [上级目录](../_README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [_README.md](<_README.md>) | Markdown | 989 B | about —— 关于页 | 2026-10-17 21:11 |
+| [_README.md](<_README.md>) | Markdown | 1005 B | about —— 关于页 | 2026-10-18 18:39 |
 | [index.md](<index.md>) | Markdown | 80 B | about | 2024-02-14 17:04 |
 
 <!-- MANIFEST:END -->

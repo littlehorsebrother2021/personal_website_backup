@@ -1,7 +1,7 @@
 # 站点架构与组件说明
 
 > 一页看懂这个博客由哪些部分组成、每样东西在哪、坏了该改哪个文件。
-> 实时文件清单见 [MANIFEST.md](MANIFEST.md)，命令速查见 [README.md](README.md)，Git 操作见 [GIT-GUIDE.md](GIT-GUIDE.md)。
+> 实时文件清单见 [MANIFEST.md](MANIFEST.md)，命令速查见 [../README.md](../README.md)，Git 操作见 [GIT-GUIDE.md](GIT-GUIDE.md)。
 
 ---
 
@@ -28,8 +28,8 @@ themes/…/*.ejs ┘        (本地可预览)        静态站点           git 
 | `themes/hexo-theme-matery/` | 主题 | 模板、样式、脚本、图片 | ✅ 资源随站点发布 |
 | `scaffolds/` | 模板 | `hexo new` 生成文件时套用的 front-matter 骨架 | 不发布 |
 | `tools/` | 工具 | 维护脚本（清单、壁纸、压缩、logo） | 不发布 |
-| `assets/` | 素材 | 封面/背景的**原始图**，仅供生成用 | 不发布 |
-| `docs/` | 文档 | 专题操作手册 | 不发布 |
+| `assets/` | 素材 | 封面/背景**原始图** + 站点图标源图 `logo.png`，仅供生成用 | 不发布 |
+| `docs/` | 文档 | **全部文档**：架构、Git 速查、全站清单、专题手册 | 不发布 |
 | `scripts/` | ⚠️ 禁止 | Hexo 会把它当插件目录逐个 `require` | — |
 | `public/` | 产物 | `hexo generate` 的输出 | ✅ 实际部署内容 |
 | `node_modules/` | 依赖 | `npm install` 还原 | 不发布 |
@@ -165,7 +165,7 @@ GitHub Pages  →  https://blog.556106.xyz/（CNAME 指向自定义域名）
 
 | 脚本 | 命令 | 作用 |
 | :--- | :--- | :--- |
-| `gen-manifest.mjs` | `npm run manifest` | 重写所有 README 的「清单」段 + 根 `MANIFEST.md` |
+| `gen-manifest.mjs` | `npm run manifest` | 重写所有 README 的「清单」段 + `docs/MANIFEST.md` |
 | `optimize-images.ps1` | `npm run optimize` | 压缩超过 1920px / 300KB 的配图 |
 | `fetch-covers.ps1` | `npm run covers` | 从必应 / Picsum 抓壁纸换封面 |
 | `update-covers.ps1` | — | 裁剪、重编号并同步主题封面配置 |
@@ -181,7 +181,7 @@ GitHub Pages  →  https://blog.556106.xyz/（CNAME 指向自定义域名）
 | 改站点标题 / 域名 / 分页 | 根 `_config.yml` |
 | 改导航菜单 / 社交链接 / 评论 | `themes/hexo-theme-matery/_config.yml` |
 | 换文章封面 / 站点背景 | `npm run covers`（或 `tools/update-covers.ps1`） |
-| 换站点图标 | 替换根 `logo.png` → `tools/replace-logo.ps1` |
+| 换站点图标 | 替换 `assets/logo.png` → `tools/replace-logo.ps1` |
 | 改页面结构或样式 | `themes/hexo-theme-matery/layout/` 或 `source/css/my.css` |
 | 加友链 | `source/_data/friends.json` |
 | 改 404 页文案 | `source/404/index.md` |
@@ -194,10 +194,10 @@ GitHub Pages  →  https://blog.556106.xyz/（CNAME 指向自定义域名）
 
 | 文件 | 回答什么问题 |
 | :--- | :--- |
-| `README.md` | 命令有哪些、项目怎么用、目录各自干嘛 |
+| `../README.md`（根目录） | 命令有哪些、项目怎么用、目录各自干嘛 |
 | `ARCHITECTURE.md`（本文） | 站点由哪些组件构成、数据怎么流动 |
-| `MANIFEST.md` | 全站有哪些文件、有哪些文章（自动生成） |
-| `GIT-GUIDE.md` | git 怎么用、出错了怎么办、换电脑怎么同步 |
+| `MANIFEST.md`（本目录） | 全站有哪些文件、有哪些文章（自动生成） |
+| `GIT-GUIDE.md`（本目录） | git 怎么用、出错了怎么办、换电脑怎么同步 |
 | `tools/README.md` | 每个维护脚本的参数与注意事项 |
 | `docs/评论区与封面配置.md` | 评论系统怎么接、封面怎么换 |
 | 各目录的 `README.md` / `_README.md` | 这个目录放什么、文件清单 |

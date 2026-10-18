@@ -43,7 +43,7 @@
 
 > **路径**：`source` ｜ **直属文件** 7 ｜ **直属子目录** 8 ｜ **本目录合计** 197 个文件
 >
-> [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
+> [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -55,7 +55,7 @@
 | [contact/](<contact/_README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [friends/](<friends/_README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
 | [tags/](<tags/_README.md>) | 目录 | 2 个文件 | — | 2026-10-17 20:30 |
-| [_README.md](<_README.md>) | Markdown | 3.5 KB | source —— 站点内容根目录 | 2026-10-17 21:11 |
+| [_README.md](<_README.md>) | Markdown | 3.6 KB | source —— 站点内容根目录 | 2026-10-18 18:39 |
 | [.nojekyll](<.nojekyll>) | 无扩展名 | 0 B | — | 2026-10-17 19:50 |
 | [baidu_verify_codeva-LmYTVPmMHf.html](<baidu_verify_codeva-LmYTVPmMHf.html>) | HTML | 57 B | — | 2026-03-18 21:16 |
 | [BingSiteAuth.xml](<BingSiteAuth.xml>) | XML | 85 B | — | 2026-06-09 11:53 |

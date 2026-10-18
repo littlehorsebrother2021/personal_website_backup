@@ -1,15 +1,15 @@
 <#
 replace-logo.ps1
 
-Replace the hexo-theme-matery favicon and site logo with the PNG at the
-blog root. Files are copied byte-for-byte; the image is never read or
+Replace the hexo-theme-matery favicon and site logo with the PNG in
+assets/. Files are copied byte-for-byte; the image is never read or
 resized.
 
 Usage:
   powershell -ExecutionPolicy Bypass -File tools\replace-logo.ps1 -Build
 
 Options:
-  -Source  PNG file to use, defaults to logo.png at the blog root
+  -Source  PNG file to use, defaults to assets/logo.png
   -Build   run hexo clean && hexo generate afterwards
 #>
 param(
@@ -21,7 +21,7 @@ $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
 if (-not $Source) {
-    $Source = Join-Path $root 'logo.png'
+    $Source = Join-Path $root 'assets\logo.png'
 }
 
 $sourceFile = (Resolve-Path -LiteralPath $Source -ErrorAction Stop).Path

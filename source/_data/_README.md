@@ -25,11 +25,11 @@
 
 > **路径**：`source/_data` ｜ **直属文件** 2 ｜ **直属子目录** 0 ｜ **本目录合计** 2 个文件
 >
-> [站点总览](../../README.md) ｜ [全站清单](../../MANIFEST.md) ｜ [上级目录](../_README.md)
+> [站点总览](../../README.md) ｜ [全站清单](../../docs/MANIFEST.md) ｜ [上级目录](../_README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [_README.md](<_README.md>) | Markdown | 1.5 KB | source/_data —— 站点数据文件 | 2026-10-17 21:11 |
+| [_README.md](<_README.md>) | Markdown | 1.5 KB | source/_data —— 站点数据文件 | 2026-10-18 18:39 |
 | [friends.json](<friends.json>) | JSON | 740 B | 配置 / 数据 | 2024-02-14 17:07 |
 
 <!-- MANIFEST:END -->

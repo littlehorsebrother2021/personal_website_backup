@@ -5,7 +5,7 @@
  * 作用：
  *   1. 扫描仓库里所有带 `<!-- MANIFEST:BEGIN -->` 标记的说明文件
  *      （README.md 或 _README.md），把标记之间的内容重写成该目录的实时文件清单。
- *   2. 重新生成根目录的 MANIFEST.md（全站统计 + 目录索引 + 文章索引）。
+ *   2. 重新生成 docs/MANIFEST.md（全站统计 + 目录索引 + 文章索引）。
  *
  * 用法：
  *   node tools/gen-manifest.mjs       # 或在项目根执行 npm run manifest
@@ -178,7 +178,7 @@ function buildBlock(dir) {
   const { files, dirs } = listDir(dir);
   const depthUp = relFrom(dir, ROOT);
   const rootLink = depthUp === '.' ? 'README.md' : `${depthUp}/README.md`;
-  const manifestLink = depthUp === '.' ? 'MANIFEST.md' : `${depthUp}/MANIFEST.md`;
+  const manifestLink = depthUp === '.' ? 'docs/MANIFEST.md' : `${depthUp}/docs/MANIFEST.md`;
   const parentDir = path.dirname(dir);
   const parentReadme = parentDir === dir ? null : findReadme(parentDir);
   const nav = [`[站点总览](${rootLink})`, `[全站清单](${manifestLink})`];
@@ -234,14 +234,34 @@ function buildBlock(dir) {
 function updateReadme(readme) {
   const dir = path.dirname(readme);
   const content = fs.readFileSync(readme, 'utf8');
-  const i = content.indexOf(BEGIN);
-  const j = content.indexOf(END);
-  const block = buildBlock(dir);
-  if (i === -1 || j === -1 || j < i) {
+  const eol = content.includes('\r\n') ? '\r\n' : '\n';
+  const lines = content.split(/\r?\n/);
+
+  /* 只认「独占一行」的标记，并且跳过 ``` / ~~~ 围栏代码块。
+     原因：文档正文里常把标记写成行内代码（`<!-- MANIFEST:BEGIN -->`）或放在
+     代码示例里，早期用 indexOf 直接搜索会把正文替换掉（2026-10-18 踩过）。
+     若有多个候选，取最后一对 —— 真正的清单块总在文件末尾。 */
+  let inFence = false;
+  let beginIdx = -1;
+  let endIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (/^(```|~~~)/.test(t)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    if (t === BEGIN) beginIdx = i;
+    else if (t === END && beginIdx !== -1) endIdx = i;
+  }
+
+  if (beginIdx === -1 || endIdx === -1 || endIdx < beginIdx) {
     console.warn(`  跳过（无标记）：${relOf(readme)}`);
     return false;
   }
-  const next = content.slice(0, i) + block + content.slice(j + END.length);
+
+  const block = buildBlock(dir).split('\n');
+  const next = [...lines.slice(0, beginIdx), ...block, ...lines.slice(endIdx + 1)].join(eol);
   if (next !== content) fs.writeFileSync(readme, next);
   return next !== content;
 }
@@ -368,7 +388,7 @@ function buildRootManifest() {
     const { files, dirs: sub } = listDir(dir);
     const readme = findReadme(dir);
     const name = relOf(dir) || '.';
-    const link = readme ? `[说明](${relFrom(ROOT, readme)})` : '—';
+    const link = readme ? `[说明](${relFrom(path.join(ROOT, 'docs'), readme)})` : '—';
     const st = fs.statSync(dir);
     out.push(
       `| \`${name}\` | ${link} | ${files.length} | ${sub.length} | ${countFiles(dir)} | ${fmtTime(st.mtime)} |`
@@ -382,12 +402,14 @@ function buildRootManifest() {
   out.push('| :--- | :--- | :--- | :--- | :--- |');
   for (const p of posts) {
     out.push(
-      `| ${cell(String(p.date).slice(0, 16))} | ${cell(p.category)} | ${cell(p.tags) || '—'} | ${cell(p.title)} | [${cell(path.basename(p.file))}](<${p.file}>) |`
+      `| ${cell(String(p.date).slice(0, 16))} | ${cell(p.category)} | ${cell(p.tags) || '—'} | ${cell(p.title)} | [${cell(path.basename(p.file))}](<../${p.file}>) |`
     );
   }
   out.push('');
 
-  fs.writeFileSync(path.join(ROOT, 'MANIFEST.md'), `${out.join('\n')}\n`);
+  const docsDir = path.join(ROOT, 'docs');
+  fs.mkdirSync(docsDir, { recursive: true });
+  fs.writeFileSync(path.join(docsDir, 'MANIFEST.md'), `${out.join('\n')}\n`);
   return { totalFiles, totalBytes, dirs: dirs.length, posts: posts.length };
 }
 

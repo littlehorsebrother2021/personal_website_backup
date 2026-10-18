@@ -29,13 +29,13 @@
 
 > **路径**：`scaffolds` ｜ **直属文件** 4 ｜ **直属子目录** 0 ｜ **本目录合计** 4 个文件
 >
-> [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
+> [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [draft.md](<draft.md>) | Markdown | 33 B | {{ title }} | 2023-10-20 21:29 |
 | [page.md](<page.md>) | Markdown | 44 B | {{ title }} | 2023-10-20 21:29 |
 | [post.md](<post.md>) | Markdown | 50 B | {{ title }} | 2023-10-20 21:29 |
-| [README.md](<README.md>) | Markdown | 1.9 KB | scaffolds —— 新建文件模板 | 2026-10-17 21:11 |
+| [README.md](<README.md>) | Markdown | 1.9 KB | scaffolds —— 新建文件模板 | 2026-10-18 18:39 |
 
 <!-- MANIFEST:END -->

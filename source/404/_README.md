@@ -15,11 +15,11 @@
 
 > **路径**：`source/404` ｜ **直属文件** 2 ｜ **直属子目录** 0 ｜ **本目录合计** 2 个文件
 >
-> [站点总览](../../README.md) ｜ [全站清单](../../MANIFEST.md) ｜ [上级目录](../_README.md)
+> [站点总览](../../README.md) ｜ [全站清单](../../docs/MANIFEST.md) ｜ [上级目录](../_README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [_README.md](<_README.md>) | Markdown | 1.0 KB | 404 —— 自定义错误页 | 2026-10-18 18:27 |
+| [_README.md](<_README.md>) | Markdown | 1.1 KB | 404 —— 自定义错误页 | 2026-10-18 18:39 |
 | [index.md](<index.md>) | Markdown | 162 B | 404 | 2026-10-18 18:24 |
 
 <!-- MANIFEST:END -->

@@ -15,11 +15,11 @@
 
 > **路径**：`source/contact` ｜ **直属文件** 2 ｜ **直属子目录** 0 ｜ **本目录合计** 2 个文件
 >
-> [站点总览](../../README.md) ｜ [全站清单](../../MANIFEST.md) ｜ [上级目录](../_README.md)
+> [站点总览](../../README.md) ｜ [全站清单](../../docs/MANIFEST.md) ｜ [上级目录](../_README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
-| [_README.md](<_README.md>) | Markdown | 959 B | contact —— 留言板 | 2026-10-17 21:11 |
+| [_README.md](<_README.md>) | Markdown | 975 B | contact —— 留言板 | 2026-10-18 18:39 |
 | [index.md](<index.md>) | Markdown | 84 B | contact | 2024-02-14 17:05 |
 
 <!-- MANIFEST:END -->

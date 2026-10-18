@@ -36,11 +36,11 @@
 
 > **路径**：`.github` ｜ **直属文件** 2 ｜ **直属子目录** 0 ｜ **本目录合计** 2 个文件
 >
-> [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
+> [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [dependabot.yml](<dependabot.yml>) | YAML | 625 B | 配置 / 数据 | 2026-10-18 18:31 |
-| [README.md](<README.md>) | Markdown | 2.0 KB | .github —— GitHub 自动化配置 | 2026-10-18 18:31 |
+| [README.md](<README.md>) | Markdown | 2.0 KB | .github —— GitHub 自动化配置 | 2026-10-18 18:39 |
 
 <!-- MANIFEST:END -->

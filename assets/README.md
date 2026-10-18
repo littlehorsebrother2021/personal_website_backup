@@ -1,6 +1,7 @@
 # assets —— 封面 / 背景素材库
 
-> 存放**原始图片素材**。这里不是 Hexo 的 `source/` 目录，内容**不会发布到网站**，只作为生成封面时的输入。
+> 存放**原始图片素材**：换封面用的风光图、站点图标源图。
+> 这里不是 Hexo 的 `source/` 目录，内容**不会发布到网站**，只作为生成时的输入。
 
 ## 说明
 
@@ -8,6 +9,7 @@
 | :--- | :--- | :--- | :--- |
 | `nature/` | 9 张自然风光摄影（1920px 宽） | 站点背景轮播 + 文章默认封面 | ✅ 入库 |
 | `incoming/` | `fetch-covers.ps1` 下载的原始大图（4K） | 临时中转，处理完即可删 | ❌ 已 gitignore |
+| `logo.png` | 站点图标源图（512×512） | `tools/replace-logo.ps1` 的输入，被复制成主题的 favicon 与 logo | ✅ 入库 |
 
 ### 工作流
 
@@ -38,13 +40,14 @@ themes/hexo-theme-matery/source/medias/featureimages/*.jpg （文章默认封面
 
 <!-- MANIFEST:BEGIN -->
 
-> **路径**：`assets` ｜ **直属文件** 1 ｜ **直属子目录** 1 ｜ **本目录合计** 10 个文件
+> **路径**：`assets` ｜ **直属文件** 2 ｜ **直属子目录** 1 ｜ **本目录合计** 11 个文件
 >
-> [站点总览](../README.md) ｜ [全站清单](../MANIFEST.md) ｜ [上级目录](../README.md)
+> [站点总览](../README.md) ｜ [全站清单](../docs/MANIFEST.md) ｜ [上级目录](../README.md)
 
 | 名称 | 类型 | 大小 / 内容 | 说明 | 最后修改 |
 | :--- | :--- | :--- | :--- | :--- |
 | [nature/](<nature>) | 目录 | 9 个文件 | — | 2026-10-17 20:40 |
-| [README.md](<README.md>) | Markdown | 2.1 KB | assets —— 封面 / 背景素材库 | 2026-10-17 21:11 |
+| [logo.png](<logo.png>) | 图片 | 324.8 KB | — | 2026-10-18 18:24 |
+| [README.md](<README.md>) | Markdown | 2.4 KB | assets —— 封面 / 背景素材库 | 2026-10-18 18:38 |
 
 <!-- MANIFEST:END -->
